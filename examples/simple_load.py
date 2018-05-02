@@ -19,4 +19,4 @@ import matplotlib.pyplot as plt
 
 frame = video[0].get().transpose(1, 2, 0) / 255.
 plt.imshow(frame)
-plt.savefig('test.png')
+plt.savefig('examples/sample.png')
