@@ -86,11 +86,6 @@ cdef extern from "VideoLoader.h":
     cdef Size nvvl_video_size(VideoLoaderHandle loader)
 
 
-cdef extern from "cuda_runtime.h":
-
-    cdef void cudaMallocPitch(void** devPtr, size_t* pitch, size_t width, size_t height)
-
-
 cdef class NVVLVideoLoader:
 
     cdef VideoLoaderHandle handle
@@ -105,10 +100,10 @@ cdef class NVVLVideoLoader:
         return nvvl_frame_count(self.handle, filename.encode('utf-8'))
 
     def read_sequence(
-            self, filename, frame=0, count=None, channels=3, crop_height=None,
-            crop_width=None, scale_height=1.0, scale_width=1.0,
-            scale_method='Linear', horiz_flip=False, normalized=True,
-            color_space='RGB', chroma_up_method='Linear'):
+            self, filename, frame=0, count=None, channels=3, crop_x=0,
+            crop_y=0,crop_height=None, crop_width=None, scale_height=0,
+            scale_width=0, scale_method='Linear', horiz_flip=False,
+            normalized=False, color_space='RGB', chroma_up_method='Linear'):
         if count is None:
             count = self.frame_count(filename)
         cdef PictureSequenceHandle sequence = nvvl_create_sequence(count)
@@ -117,17 +112,19 @@ cdef class NVVLVideoLoader:
         cdef uint16_t width = size.width if crop_width is None else crop_width
         cdef uint16_t height = size.height if crop_height is None else crop_height
 
-        #array = cupy.zeros((count, channels, height, width), dtype=cupy.float32)
-        #array = cupy.ascontiguousarray(array)
+        array = cupy.zeros((count, channels, height, width), dtype=cupy.float32)
+        array = cupy.ascontiguousarray(array)
 
         cdef NVVL_PicLayer layer
         layer.type = PDT_FLOAT
-        #layer.data = <void*><size_t>array.data.ptr
+        layer.data = <void*><size_t>array.data.ptr
         layer.index_map = NULL
         layer.desc.count = count
         layer.desc.channels = channels
         layer.desc.height = height
         layer.desc.width = width
+        layer.desc.crop_x = crop_x
+        layer.desc.crop_y = crop_y
         layer.desc.scale_height = scale_height
         layer.desc.scale_width = scale_width
         layer.desc.horiz_flip = horiz_flip
@@ -152,15 +149,10 @@ cdef class NVVLVideoLoader:
             nvvl_scale_method = ScaleMethod_Linear
         layer.desc.scale_method = nvvl_scale_method
 
-        layer.desc.stride.x = 1
-        #cdef size_t pitch = 0
-        #layer.desc.stride.y = pitch / sizeof(float)
+        layer.desc.stride.x = sizeof(float)
+        layer.desc.stride.y = width * layer.desc.stride.x
         layer.desc.stride.c = layer.desc.stride.y * height
         layer.desc.stride.n = layer.desc.stride.c * channels
-
-        cudaMallocPitch(
-            &layer.data, &layer.desc.stride.y, layer.desc.width,
-            layer.desc.height * count * channels)
         
         cdef string name = 'pixels'.encode('utf-8')
         nvvl_set_layer(sequence, &layer, name.c_str())
