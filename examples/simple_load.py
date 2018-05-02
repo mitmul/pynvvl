@@ -21,12 +21,12 @@ video = loader.read_sequence(
     normalized=True
 )
 
+print(video.shape)  # => (91, 3, 256, 256): (n_frames, channels, height, width)
+print(video.dtype)  # => float32
+
 # Get the first frame as numpy array
 frame = video[0].get()
 frame = frame.transpose(1, 2, 0)
-
-print(frame.shape)  # => (2, 3, 256, 256): (n_frames, channels, height, width)
-print(frame.dtype)  # => float32
 
 plt.imshow(frame)
 plt.savefig('examples/sample.png')
