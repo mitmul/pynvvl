@@ -149,7 +149,6 @@ cdef class NVVLVideoLoader:
         #    layer.desc.height * count * channels)
         
         nvvl_set_layer(sequence, &layer, 'pixels')
-
         nvvl_read_sequence(self.handle, filename.encode('utf-8'), frame, count)
         nvvl_receive_frames_sync(self.handle, sequence)
 
