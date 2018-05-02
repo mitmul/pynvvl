@@ -11,4 +11,11 @@ nvidia-docker run \
 bash -c "find / -name \"*libnvcuvid.so.1\" | \
 xargs -I{} ln -s {} /usr/local/lib/libnvcuvid.so && \
 cd /root/nvvl && mkdir build && cd build && \
-cmake ../ && make -j && make install && cd /root && bash"
+cd /root/nvvl/build && \
+cmake ../ \
+-DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+-DCMAKE_INSTALL_RPATH=\"\\\$ORIGIN\" && \
+apt-get install chrpath && \
+make -j && chrpath -l libnvvl.so && \
+bash
+"

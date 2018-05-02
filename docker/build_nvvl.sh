@@ -1,16 +1,26 @@
 #!/bin/bash
 
-if [ $# -ne 1 ]; then
-    echo 'Please specify CUDA version: e.g., "bash build.sh 9.0"'
-    exit 1
-fi
+build_libnvvl() {
+    nvidia-docker run \
+    --rm \
+    -v $PWD/docker:/root/build -t mitmul/pynvvl:cuda-$1 \
+    bash -c "find / -name \"*libnvcuvid.so.1\" | \
+    xargs -I{} ln -s {} /usr/local/lib/libnvcuvid.so && \
+    if [ ! -d /root/build/lib/cuda-$1 ]; then mkdir -p /root/build/lib/cuda-$1; fi && \
+    cp -r /usr/local/lib /root/build/lib/cuda-$1 && \
+    mv /root/build/lib/cuda-$1/lib/* /root/build/lib/cuda-$1/ && \
+    rm -rf /root/build/lib/cuda-$1/lib && \
+    cd /root/nvvl && mkdir build && cd build && \
+    cd /root/nvvl/build && \
+    cmake ../ \
+    -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+    -DCMAKE_INSTALL_RPATH=\"\\\$ORIGIN\" && \
+    make -j && cp libnvvl.so /root/build/lib/cuda-$1 && \
+    apt-get install chrpath && \
+    chrpath -l libnvvl.so && \
+    cp -r /root/nvvl/include /root/build/"
+}
 
-nvidia-docker run \
---rm \
--v $PWD:/root/build -t mitmul/pynvvl:cuda-$1 \
-bash -c "find / -name \"*libnvcuvid.so.1\" | xargs -I{} ln -s {} /usr/local/lib/libnvcuvid.so && \
-cd nvvl && mkdir build && cd build && \
-cmake ../ && make -j && \
-cp -r /usr/local/lib /root/build && \
-cp libnvvl.so /root/build/lib && \
-cp -r /root/nvvl/include /root/build/"
+build_libnvvl 8.0
+build_libnvvl 9.0
+build_libnvvl 9.1

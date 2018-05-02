@@ -7,19 +7,10 @@ PyNVVL is a thin wrapper of NVIDIA Video Loader (NVVL). This packages enables yo
 
 - CuPy v4.0.0
 
-### For build
 
-- Docker
-- nvidia-docker (v1/v2)
+## Install
 
-## Build
-
-```
-cd docker && bash build_nvvl.sh [YOUR CUDA VERSION]
-python setup.py build_ext -i
-```
-
-Please replace `[YOUR CUDA VERSION]` with 8.0/9.0/9.1 based on the CUDA version in your system.
+- pip install [WHEEL PATH]
 
 ## Usage
 
@@ -99,4 +90,18 @@ Loads the video from disk and returns it as a CuPy ndarray.
             It should be either 'RGB' or 'YCbCr'. Default is 'RGB'.
         chroma_up_method (str): How the chroma channels are upscaled from
             yuv 4:2:0 to 4:4:4. It should be 'Linear' currently.
+```
+
+## Build wheels
+
+### Requirements for build
+
+- Docker
+- nvidia-docker (v1/v2)
+
+```
+bash docker/build_docker.sh
+sudo rm -rf docker/lib
+bash docker/build_nvvl.sh
+bash docker/build_wheels.sh
 ```
