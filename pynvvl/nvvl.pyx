@@ -86,9 +86,9 @@ cdef extern from "VideoLoader.h":
     cdef Size nvvl_video_size(VideoLoaderHandle loader)
 
 
-# cdef extern from "cuda_runtime.h":
-#
-#     cdef void cudaMallocPitch(void** devPtr, size_t* pitch, size_t width, size_t height)
+cdef extern from "cuda_runtime.h":
+
+    cdef void cudaMallocPitch(void** devPtr, size_t* pitch, size_t width, size_t height)
 
 
 cdef class NVVLVideoLoader:
@@ -107,7 +107,8 @@ cdef class NVVLVideoLoader:
     def read_sequence(
             self, filename, frame=0, count=None, channels=3, crop_height=None,
             crop_width=None, scale_height=1.0, scale_width=1.0,
-            horiz_flip=False, normalized=True, color_space='RGB'):
+            scale_method='Linear', horiz_flip=False, normalized=True,
+            color_space='RGB', chroma_up_method='Linear'):
         if count is None:
             count = self.frame_count(filename)
         cdef PictureSequenceHandle sequence = nvvl_create_sequence(count)
@@ -116,12 +117,12 @@ cdef class NVVLVideoLoader:
         cdef uint16_t width = size.width if crop_width is None else crop_width
         cdef uint16_t height = size.height if crop_height is None else crop_height
 
-        cdef size_t pitch = 0
-        array = cupy.zeros((count, channels, height, width), dtype=cupy.float32)
-        
+        #array = cupy.zeros((count, channels, height, width), dtype=cupy.float32)
+        #array = cupy.ascontiguousarray(array)
+
         cdef NVVL_PicLayer layer
         layer.type = PDT_FLOAT
-        layer.data = <float*><size_t>array.data.ptr
+        #layer.data = <void*><size_t>array.data.ptr
         layer.index_map = NULL
         layer.desc.count = count
         layer.desc.channels = channels
@@ -139,17 +140,34 @@ cdef class NVVLVideoLoader:
             nvvl_color_space = ColorSpace_YCbCr
         layer.desc.color_space = nvvl_color_space
 
+        cdef NVVL_ChromaUpMethod nvvl_chroma_up_method
+        if chroma_up_method == 'Linear':
+            nvvl_chroma_up_method = ChromaUpMethod_Linear
+        layer.desc.chroma_up_method = nvvl_chroma_up_method
+
+        cdef NVVL_ScaleMethod nvvl_scale_method
+        if scale_method == 'Nearest':
+            nvvl_scale_method = ScaleMethod_Nearest
+        elif scale_method == 'Linear':
+            nvvl_scale_method = ScaleMethod_Linear
+        layer.desc.scale_method = nvvl_scale_method
+
         layer.desc.stride.x = 1
-        layer.desc.stride.y = pitch / sizeof(float)
+        #cdef size_t pitch = 0
+        #layer.desc.stride.y = pitch / sizeof(float)
         layer.desc.stride.c = layer.desc.stride.y * height
         layer.desc.stride.n = layer.desc.stride.c * channels
 
-        #cudaMallocPitch(
-        #    &layer.data, &layer.desc.stride.y, layer.desc.width,
-        #    layer.desc.height * count * channels)
+        cudaMallocPitch(
+            &layer.data, &layer.desc.stride.y, layer.desc.width,
+            layer.desc.height * count * channels)
         
-        nvvl_set_layer(sequence, &layer, 'pixels')
+        cdef string name = 'pixels'.encode('utf-8')
+        nvvl_set_layer(sequence, &layer, name.c_str())
+        print('set_layer')
         nvvl_read_sequence(self.handle, filename.encode('utf-8'), frame, count)
+        print('read_sequence')
         nvvl_receive_frames_sync(self.handle, sequence)
-
-        return array
+        print('receive_frames')
+        nvvl_free_sequence(sequence)
+        #return array

@@ -5,11 +5,11 @@ import pynvvl
 
 loader = pynvvl.NVVLVideoLoader(device_id=0)
 
-n_frames = loader.frame_count('examples/sample.mp4')
+n_frames = loader.frame_count('examples/sample_nosound.mp4')
 
 print(n_frames)
 
-video = loader.read_sequence('examples/sample.mp4', 0, 2)
+video = loader.read_sequence('examples/sample_nosound.mp4', 0, 2)
 
 print(video.shape)
 

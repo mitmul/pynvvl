@@ -13,16 +13,19 @@ sourcefiles = [
     'pynvvl/nvvl.pyx',
 ]
 
+cpath = os.environ['CPATH'] if 'CPATH' in os.environ else ''
 includefiles = [
     'docker/include',
     '/usr/local/cuda/include',
-    os.environ['CPATH'],
+    
     np.get_include()
 ]
 
+ld_library_path = os.environ['LD_LIBRARY_PATH'] \
+    if 'LD_LIBRARY_PATH' in os.environ else ''
 library_dirs = [
     'docker/lib',
-    os.environ['LD_LIBRARY_PATH']
+    ld_library_path
 ]
 
 libraries = [
