@@ -102,12 +102,57 @@ cdef class NVVLVideoLoader:
         return nvvl_frame_count(self.handle, filename.encode('utf-8'))
 
     def read_sequence(
-            self, filename, frame=0, count=None, channels=3, crop_x=0,
-            crop_y=0,crop_height=None, crop_width=None, scale_height=0,
-            scale_width=0, scale_method='Linear', horiz_flip=False,
-            normalized=False, color_space='RGB', chroma_up_method='Linear'):
+            self, filename, frame=0, count=None, channels=3,
+            scale_height=0, scale_width=0, crop_x=0, crop_y=0,
+            crop_height=None, crop_width=None, scale_method='Linear',
+            horiz_flip=False, normalized=False, color_space='RGB',
+            chroma_up_method='Linear'):
+        """Loads the video from disk and returns it as a CuPy ndarray.
+
+        Args:
+            filename (str): The path to the video.
+            frame (int): The initial frame number of the returned sequence.
+                Default is 0.
+            count (int): The number of frames of the returned sequence.
+                If it is None, whole frames of the video are loaded.
+            channels (int): The number of color channels of the video.
+                Default is 3.
+            scale_height (int): The height of the scaled video.
+                Note that scaling is performed before cropping.
+                If it is 0 no scaling is performed. Default is 0.
+            scale_width (int): The width of the scaled video.
+                Note that scaling is performed before cropping.
+                If it is 0, no scaling is performed. Default is 0.
+            crop_x (int): Location of the crop within the scaled frame.
+                Must be set such that crop_y + height <= original height.
+                Default is 0.
+            crop_y (int): Location of the crop within the scaled frame.
+                Must be set such that crop_x + width <= original height.
+                Default is 0.
+            crop_height (int): The height of cropped region of the video.
+                If it is None, no cropping is performed. Default is None.
+            crop_width (int): The width of cropped region of the video.
+                If it is None, no cropping is performed. Default is None.
+            scale_method (str): Scaling method. It should be either of
+                'Nearest' or 'Lienar'. Default is 'Linear'.
+            horiz_flip (bool): Whether horizontal flipping is performed or not.
+                Default is False.
+            normalized (bool): If it is True, the values of returned video is
+                normalized into [0, 1], otherwise the value range is [0, 255].
+                Default is False.
+            color_space (str): The color space of the values of returned video.
+                It should be either 'RGB' or 'YCbCr'. Default is 'RGB'.
+            chroma_up_method (str): How the chroma channels are upscaled from
+                yuv 4:2:0 to 4:4:4. It should be 'Linear' currently.
+
+        """
+        frame_count = self.frame_count(filename)
         if count is None:
-            count = self.frame_count(filename)
+            count = frame_count
+        if count > frame_count:
+            raise ValueError(
+                'count should be less than the video length ({}) '
+                'but {} was given.'.format(frame_count, count))
         cdef PictureSequenceHandle sequence = nvvl_create_sequence(count)
 
         cdef Size size = nvvl_video_size(self.handle)
@@ -140,11 +185,19 @@ cdef class NVVLVideoLoader:
             nvvl_color_space = ColorSpace_RGB
         elif color_space == 'YCbCr':
             nvvl_color_space = ColorSpace_YCbCr
+        else:
+            raise ValueError(
+                'color_space should be either \'RGB\' or \'YCbCr\' '
+                'but {} was given.'.format(color_space))
         layer.desc.color_space = nvvl_color_space
 
         cdef NVVL_ChromaUpMethod nvvl_chroma_up_method
         if chroma_up_method == 'Linear':
             nvvl_chroma_up_method = ChromaUpMethod_Linear
+        else:
+            raise ValueError(
+                'chroma_up_method should be \'Linear\' '
+                'but {} was given.'.format(chroma_up_method))
         layer.desc.chroma_up_method = nvvl_chroma_up_method
 
         cdef NVVL_ScaleMethod nvvl_scale_method
@@ -152,6 +205,10 @@ cdef class NVVLVideoLoader:
             nvvl_scale_method = ScaleMethod_Nearest
         elif scale_method == 'Linear':
             nvvl_scale_method = ScaleMethod_Linear
+        else:
+            raise ValueError(
+                'scale_method should either \'Nearest\' or \'Linear\' '
+                'but {} was given.'.format(scale_method))
         layer.desc.scale_method = nvvl_scale_method
 
         layer.desc.stride.x = 1

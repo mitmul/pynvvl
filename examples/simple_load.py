@@ -2,21 +2,31 @@
 # -*- coding: utf-8 -*-
 
 import pynvvl
-
-loader = pynvvl.NVVLVideoLoader(device_id=0)
-
-n_frames = loader.frame_count('examples/sample.mp4')
-
-print(n_frames)
-
-video = loader.read_sequence('examples/sample.mp4', 0, 2)
-
-print(video.shape)
-
-print(video.dtype)
-
 import matplotlib.pyplot as plt
 
-frame = video[0].get().transpose(1, 2, 0) / 255.
+# Create NVVLVideoLoader object
+loader = pynvvl.NVVLVideoLoader(device_id=0)
+
+# Show the number of frames in the video
+n_frames = loader.frame_count('examples/sample.mp4')
+print('Number of frames:', n_frames)
+
+# Load a video and return it as a CuPy array
+video = loader.read_sequence(
+    'examples/sample.mp4',
+    horiz_flip=True,
+    crop_y=30,
+    crop_height=190,
+    scale_method='Nearest',
+    normalized=True
+)
+
+# Get the first frame as numpy array
+frame = video[0].get()
+frame = frame.transpose(1, 2, 0)
+
+print(frame.shape)  # => (2, 3, 256, 256): (n_frames, channels, height, width)
+print(frame.dtype)  # => float32
+
 plt.imshow(frame)
 plt.savefig('examples/sample.png')
