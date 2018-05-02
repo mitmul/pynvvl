@@ -1,7 +1,7 @@
 PyNVVL
 ======
 
-PyNVVL is a thin wrapper of NVIDIA Video Loader (NVVL). This packages enables you to load videos directoly to GPU memory and access them as CuPy ndarrays.
+PyNVVL is a thin wrapper of NVIDIA Video Loader (NVVL). This packages enables you to load videos directoly to GPU memory and access them as CuPy ndarrays with zero copy.
 
 ## Requirements
 
