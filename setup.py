@@ -15,6 +15,7 @@ sourcefiles = [
 
 includefiles = [
     'docker/include',
+    '/usr/local/cuda/include',
     os.environ['CPATH'],
     np.get_include()
 ]
