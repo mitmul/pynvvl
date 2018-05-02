@@ -6,7 +6,7 @@ ARG CMAKE_VERSION=3.10.2
 
 # nvcuvid deps
 RUN apt-get update --fix-missing && \
-    apt-get install -y libx11-6 libxext6 vim 
+    apt-get install -y libx11-6 libxext6 vim git
 ENV NVIDIA_DRIVER_CAPABILITIES=video,compute,utility
 
 # minimal ffmpeg from source
@@ -43,17 +43,8 @@ RUN apt-get install -y pkg-config doxygen wget && \
     apt-get purge -y wget && \
     apt-get autoremove -y
 
-# nvidia-docker only provides libraries for runtime use, not for
-# development, to hack it so we can develop inside a container (not a
-# normal or supported practice), we need to make an unversioned
-# symlink so gcc can find the library.  Additional, different
-# nvidia-docker versions put the lib in different places, so we make
-# symlinks for both places.
-RUN ln -s /usr/local/nvidia/lib64/libnvcuvid.so.1 /usr/local/lib/libnvcuvid.so
 ENV LD_LIBRARY_PATH /usr/local/lib:$LD_LIBRARY_PATH
 ENV LIBRARY_PATH /usr/local/lib:$LIBRARY_PATH
-
-RUN apt-get install -y git
 
 WORKDIR /root
 

@@ -3,21 +3,18 @@ pynvvl
 
 ## Requirements
 
-### For build
-
-- nvidia-docker
-- CuPy
-
-### For use
-
-- CuPy
+- Docker
+- nvidia-docker (v1/v2)
+- CuPy v4.0.0
 
 ## Build
 
 ```
-cd docker && bash build.sh
+cd docker && bash build.sh [YOUR CUDA VERSION]
 python setup.py build_ext -i
 ```
+
+Please replace `[YOUR CUDA VERSION]` with 8.0/9.0/9.1 based on the CUDA version in your system.
 
 ## Usage
 
