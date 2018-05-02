@@ -795,7 +795,7 @@ static const char *__pyx_f[] = {
 /*--- Type declarations ---*/
 struct __pyx_obj_6pynvvl_NVVLVideoLoader;
 
-/* "pynvvl/nvvl.pyx":92
+/* "pynvvl/nvvl.pyx":94
  * 
  * 
  * cdef class NVVLVideoLoader:             # <<<<<<<<<<<<<<
@@ -1181,7 +1181,7 @@ static PyObject *__pyx_tuple__3;
 static PyObject *__pyx_tuple__4;
 /* Late includes */
 
-/* "pynvvl/nvvl.pyx":96
+/* "pynvvl/nvvl.pyx":98
  *     cdef VideoLoaderHandle handle
  * 
  *     def __init__(self, device_id):             # <<<<<<<<<<<<<<
@@ -1215,7 +1215,7 @@ static int __pyx_pw_6pynvvl_15NVVLVideoLoader_1__init__(PyObject *__pyx_v_self, 
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(1, 96, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(1, 98, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 1) {
       goto __pyx_L5_argtuple_error;
@@ -1226,7 +1226,7 @@ static int __pyx_pw_6pynvvl_15NVVLVideoLoader_1__init__(PyObject *__pyx_v_self, 
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 96, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 98, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pynvvl.NVVLVideoLoader.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -1245,17 +1245,17 @@ static int __pyx_pf_6pynvvl_15NVVLVideoLoader___init__(struct __pyx_obj_6pynvvl_
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "pynvvl/nvvl.pyx":97
+  /* "pynvvl/nvvl.pyx":99
  * 
  *     def __init__(self, device_id):
  *         self.handle = nvvl_create_video_loader(device_id)             # <<<<<<<<<<<<<<
  * 
  *     def __deaclloc__(self):
  */
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_device_id); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 97, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_device_id); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 99, __pyx_L1_error)
   __pyx_v_self->handle = nvvl_create_video_loader(__pyx_t_1);
 
-  /* "pynvvl/nvvl.pyx":96
+  /* "pynvvl/nvvl.pyx":98
  *     cdef VideoLoaderHandle handle
  * 
  *     def __init__(self, device_id):             # <<<<<<<<<<<<<<
@@ -1274,7 +1274,7 @@ static int __pyx_pf_6pynvvl_15NVVLVideoLoader___init__(struct __pyx_obj_6pynvvl_
   return __pyx_r;
 }
 
-/* "pynvvl/nvvl.pyx":99
+/* "pynvvl/nvvl.pyx":101
  *         self.handle = nvvl_create_video_loader(device_id)
  * 
  *     def __deaclloc__(self):             # <<<<<<<<<<<<<<
@@ -1300,7 +1300,7 @@ static PyObject *__pyx_pf_6pynvvl_15NVVLVideoLoader_2__deaclloc__(struct __pyx_o
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__deaclloc__", 0);
 
-  /* "pynvvl/nvvl.pyx":100
+  /* "pynvvl/nvvl.pyx":102
  * 
  *     def __deaclloc__(self):
  *         nvvl_destroy_video_loader(self.handle)             # <<<<<<<<<<<<<<
@@ -1309,7 +1309,7 @@ static PyObject *__pyx_pf_6pynvvl_15NVVLVideoLoader_2__deaclloc__(struct __pyx_o
  */
   nvvl_destroy_video_loader(__pyx_v_self->handle);
 
-  /* "pynvvl/nvvl.pyx":99
+  /* "pynvvl/nvvl.pyx":101
  *         self.handle = nvvl_create_video_loader(device_id)
  * 
  *     def __deaclloc__(self):             # <<<<<<<<<<<<<<
@@ -1324,7 +1324,7 @@ static PyObject *__pyx_pf_6pynvvl_15NVVLVideoLoader_2__deaclloc__(struct __pyx_o
   return __pyx_r;
 }
 
-/* "pynvvl/nvvl.pyx":102
+/* "pynvvl/nvvl.pyx":104
  *         nvvl_destroy_video_loader(self.handle)
  * 
  *     def frame_count(self, filename):             # <<<<<<<<<<<<<<
@@ -1353,7 +1353,7 @@ static PyObject *__pyx_pf_6pynvvl_15NVVLVideoLoader_4frame_count(struct __pyx_ob
   char const *__pyx_t_3;
   __Pyx_RefNannySetupContext("frame_count", 0);
 
-  /* "pynvvl/nvvl.pyx":103
+  /* "pynvvl/nvvl.pyx":105
  * 
  *     def frame_count(self, filename):
  *         return nvvl_frame_count(self.handle, filename.encode('utf-8'))             # <<<<<<<<<<<<<<
@@ -1361,20 +1361,20 @@ static PyObject *__pyx_pf_6pynvvl_15NVVLVideoLoader_4frame_count(struct __pyx_ob
  *     def read_sequence(
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_filename, __pyx_n_s_encode); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 103, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_filename, __pyx_n_s_encode); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 103, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_3 = __Pyx_PyObject_AsString(__pyx_t_2); if (unlikely((!__pyx_t_3) && PyErr_Occurred())) __PYX_ERR(1, 103, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyInt_From_int(nvvl_frame_count(__pyx_v_self->handle, __pyx_t_3)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 103, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_AsString(__pyx_t_2); if (unlikely((!__pyx_t_3) && PyErr_Occurred())) __PYX_ERR(1, 105, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(nvvl_frame_count(__pyx_v_self->handle, __pyx_t_3)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "pynvvl/nvvl.pyx":102
+  /* "pynvvl/nvvl.pyx":104
  *         nvvl_destroy_video_loader(self.handle)
  * 
  *     def frame_count(self, filename):             # <<<<<<<<<<<<<<
@@ -1394,7 +1394,7 @@ static PyObject *__pyx_pf_6pynvvl_15NVVLVideoLoader_4frame_count(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "pynvvl/nvvl.pyx":105
+/* "pynvvl/nvvl.pyx":107
  *         return nvvl_frame_count(self.handle, filename.encode('utf-8'))
  * 
  *     def read_sequence(             # <<<<<<<<<<<<<<
@@ -1424,7 +1424,7 @@ static PyObject *__pyx_pw_6pynvvl_15NVVLVideoLoader_7read_sequence(PyObject *__p
     PyObject* values[11] = {0,0,0,0,0,0,0,0,0,0,0};
     values[1] = ((PyObject *)__pyx_int_0);
 
-    /* "pynvvl/nvvl.pyx":106
+    /* "pynvvl/nvvl.pyx":108
  * 
  *     def read_sequence(
  *             self, filename, frame=0, count=None, channels=3, crop_height=None,             # <<<<<<<<<<<<<<
@@ -1435,7 +1435,7 @@ static PyObject *__pyx_pw_6pynvvl_15NVVLVideoLoader_7read_sequence(PyObject *__p
     values[3] = ((PyObject *)__pyx_int_3);
     values[4] = ((PyObject *)Py_None);
 
-    /* "pynvvl/nvvl.pyx":107
+    /* "pynvvl/nvvl.pyx":109
  *     def read_sequence(
  *             self, filename, frame=0, count=None, channels=3, crop_height=None,
  *             crop_width=None, scale_height=1.0, scale_width=1.0,             # <<<<<<<<<<<<<<
@@ -1446,7 +1446,7 @@ static PyObject *__pyx_pw_6pynvvl_15NVVLVideoLoader_7read_sequence(PyObject *__p
     values[6] = ((PyObject *)__pyx_float_1_0);
     values[7] = ((PyObject *)__pyx_float_1_0);
 
-    /* "pynvvl/nvvl.pyx":108
+    /* "pynvvl/nvvl.pyx":110
  *             self, filename, frame=0, count=None, channels=3, crop_height=None,
  *             crop_width=None, scale_height=1.0, scale_width=1.0,
  *             horiz_flip=False, normalized=True, color_space='RGB'):             # <<<<<<<<<<<<<<
@@ -1552,7 +1552,7 @@ static PyObject *__pyx_pw_6pynvvl_15NVVLVideoLoader_7read_sequence(PyObject *__p
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "read_sequence") < 0)) __PYX_ERR(1, 105, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "read_sequence") < 0)) __PYX_ERR(1, 107, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -1595,7 +1595,7 @@ static PyObject *__pyx_pw_6pynvvl_15NVVLVideoLoader_7read_sequence(PyObject *__p
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("read_sequence", 0, 1, 11, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 105, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("read_sequence", 0, 1, 11, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 107, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pynvvl.NVVLVideoLoader.read_sequence", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -1603,7 +1603,7 @@ static PyObject *__pyx_pw_6pynvvl_15NVVLVideoLoader_7read_sequence(PyObject *__p
   __pyx_L4_argument_unpacking_done:;
   __pyx_r = __pyx_pf_6pynvvl_15NVVLVideoLoader_6read_sequence(((struct __pyx_obj_6pynvvl_NVVLVideoLoader *)__pyx_v_self), __pyx_v_filename, __pyx_v_frame, __pyx_v_count, __pyx_v_channels, __pyx_v_crop_height, __pyx_v_crop_width, __pyx_v_scale_height, __pyx_v_scale_width, __pyx_v_horiz_flip, __pyx_v_normalized, __pyx_v_color_space);
 
-  /* "pynvvl/nvvl.pyx":105
+  /* "pynvvl/nvvl.pyx":107
  *         return nvvl_frame_count(self.handle, filename.encode('utf-8'))
  * 
  *     def read_sequence(             # <<<<<<<<<<<<<<
@@ -1645,7 +1645,7 @@ static PyObject *__pyx_pf_6pynvvl_15NVVLVideoLoader_6read_sequence(struct __pyx_
   __Pyx_RefNannySetupContext("read_sequence", 0);
   __Pyx_INCREF(__pyx_v_count);
 
-  /* "pynvvl/nvvl.pyx":109
+  /* "pynvvl/nvvl.pyx":111
  *             crop_width=None, scale_height=1.0, scale_width=1.0,
  *             horiz_flip=False, normalized=True, color_space='RGB'):
  *         if count is None:             # <<<<<<<<<<<<<<
@@ -1656,14 +1656,14 @@ static PyObject *__pyx_pf_6pynvvl_15NVVLVideoLoader_6read_sequence(struct __pyx_
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "pynvvl/nvvl.pyx":110
+    /* "pynvvl/nvvl.pyx":112
  *             horiz_flip=False, normalized=True, color_space='RGB'):
  *         if count is None:
  *             count = self.frame_count(filename)             # <<<<<<<<<<<<<<
  *         cdef PictureSequenceHandle sequence = nvvl_create_sequence(count)
  * 
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_frame_count); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 110, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_frame_count); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 112, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -1676,13 +1676,13 @@ static PyObject *__pyx_pf_6pynvvl_15NVVLVideoLoader_6read_sequence(struct __pyx_
       }
     }
     if (!__pyx_t_5) {
-      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_filename); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 110, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_filename); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 112, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_v_filename};
-        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 110, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 112, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_GOTREF(__pyx_t_3);
       } else
@@ -1690,19 +1690,19 @@ static PyObject *__pyx_pf_6pynvvl_15NVVLVideoLoader_6read_sequence(struct __pyx_
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_v_filename};
-        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 110, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 112, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_GOTREF(__pyx_t_3);
       } else
       #endif
       {
-        __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 110, __pyx_L1_error)
+        __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 112, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __pyx_t_5 = NULL;
         __Pyx_INCREF(__pyx_v_filename);
         __Pyx_GIVEREF(__pyx_v_filename);
         PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_v_filename);
-        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 110, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 112, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       }
@@ -1711,7 +1711,7 @@ static PyObject *__pyx_pf_6pynvvl_15NVVLVideoLoader_6read_sequence(struct __pyx_
     __Pyx_DECREF_SET(__pyx_v_count, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "pynvvl/nvvl.pyx":109
+    /* "pynvvl/nvvl.pyx":111
  *             crop_width=None, scale_height=1.0, scale_width=1.0,
  *             horiz_flip=False, normalized=True, color_space='RGB'):
  *         if count is None:             # <<<<<<<<<<<<<<
@@ -1720,17 +1720,17 @@ static PyObject *__pyx_pf_6pynvvl_15NVVLVideoLoader_6read_sequence(struct __pyx_
  */
   }
 
-  /* "pynvvl/nvvl.pyx":111
+  /* "pynvvl/nvvl.pyx":113
  *         if count is None:
  *             count = self.frame_count(filename)
  *         cdef PictureSequenceHandle sequence = nvvl_create_sequence(count)             # <<<<<<<<<<<<<<
  * 
  *         cdef Size size = nvvl_video_size(self.handle)
  */
-  __pyx_t_7 = __Pyx_PyInt_As_uint16_t(__pyx_v_count); if (unlikely((__pyx_t_7 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 111, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyInt_As_uint16_t(__pyx_v_count); if (unlikely((__pyx_t_7 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 113, __pyx_L1_error)
   __pyx_v_sequence = nvvl_create_sequence(__pyx_t_7);
 
-  /* "pynvvl/nvvl.pyx":113
+  /* "pynvvl/nvvl.pyx":115
  *         cdef PictureSequenceHandle sequence = nvvl_create_sequence(count)
  * 
  *         cdef Size size = nvvl_video_size(self.handle)             # <<<<<<<<<<<<<<
@@ -1739,7 +1739,7 @@ static PyObject *__pyx_pf_6pynvvl_15NVVLVideoLoader_6read_sequence(struct __pyx_
  */
   __pyx_v_size = nvvl_video_size(__pyx_v_self->handle);
 
-  /* "pynvvl/nvvl.pyx":114
+  /* "pynvvl/nvvl.pyx":116
  * 
  *         cdef Size size = nvvl_video_size(self.handle)
  *         cdef uint16_t width = size.width if crop_width is None else crop_width             # <<<<<<<<<<<<<<
@@ -1750,12 +1750,12 @@ static PyObject *__pyx_pf_6pynvvl_15NVVLVideoLoader_6read_sequence(struct __pyx_
   if ((__pyx_t_2 != 0)) {
     __pyx_t_7 = __pyx_v_size.width;
   } else {
-    __pyx_t_8 = __Pyx_PyInt_As_uint16_t(__pyx_v_crop_width); if (unlikely((__pyx_t_8 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 114, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyInt_As_uint16_t(__pyx_v_crop_width); if (unlikely((__pyx_t_8 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 116, __pyx_L1_error)
     __pyx_t_7 = __pyx_t_8;
   }
   __pyx_v_width = __pyx_t_7;
 
-  /* "pynvvl/nvvl.pyx":115
+  /* "pynvvl/nvvl.pyx":117
  *         cdef Size size = nvvl_video_size(self.handle)
  *         cdef uint16_t width = size.width if crop_width is None else crop_width
  *         cdef uint16_t height = size.height if crop_height is None else crop_height             # <<<<<<<<<<<<<<
@@ -1766,12 +1766,12 @@ static PyObject *__pyx_pf_6pynvvl_15NVVLVideoLoader_6read_sequence(struct __pyx_
   if ((__pyx_t_2 != 0)) {
     __pyx_t_7 = __pyx_v_size.height;
   } else {
-    __pyx_t_8 = __Pyx_PyInt_As_uint16_t(__pyx_v_crop_height); if (unlikely((__pyx_t_8 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 115, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyInt_As_uint16_t(__pyx_v_crop_height); if (unlikely((__pyx_t_8 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 117, __pyx_L1_error)
     __pyx_t_7 = __pyx_t_8;
   }
   __pyx_v_height = __pyx_t_7;
 
-  /* "pynvvl/nvvl.pyx":117
+  /* "pynvvl/nvvl.pyx":119
  *         cdef uint16_t height = size.height if crop_height is None else crop_height
  * 
  *         cdef size_t pitch = 0             # <<<<<<<<<<<<<<
@@ -1780,23 +1780,23 @@ static PyObject *__pyx_pf_6pynvvl_15NVVLVideoLoader_6read_sequence(struct __pyx_
  */
   __pyx_v_pitch = 0;
 
-  /* "pynvvl/nvvl.pyx":118
+  /* "pynvvl/nvvl.pyx":120
  * 
  *         cdef size_t pitch = 0
  *         array = cupy.zeros((count, channels, height, width), dtype=cupy.float32)             # <<<<<<<<<<<<<<
  * 
  *         cdef NVVL_PicLayer layer
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_cupy); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 118, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_cupy); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 118, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyInt_From_uint16_t(__pyx_v_height); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 118, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_uint16_t(__pyx_v_height); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_6 = __Pyx_PyInt_From_uint16_t(__pyx_v_width); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 118, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_uint16_t(__pyx_v_width); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 118, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_INCREF(__pyx_v_count);
   __Pyx_GIVEREF(__pyx_v_count);
@@ -1810,21 +1810,21 @@ static PyObject *__pyx_pf_6pynvvl_15NVVLVideoLoader_6read_sequence(struct __pyx_
   PyTuple_SET_ITEM(__pyx_t_5, 3, __pyx_t_6);
   __pyx_t_3 = 0;
   __pyx_t_6 = 0;
-  __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 118, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5);
   __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 118, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_cupy); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 118, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_cupy); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_float32); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 118, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_float32); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_9) < 0) __PYX_ERR(1, 118, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_9) < 0) __PYX_ERR(1, 120, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, __pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 118, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, __pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -1832,52 +1832,61 @@ static PyObject *__pyx_pf_6pynvvl_15NVVLVideoLoader_6read_sequence(struct __pyx_
   __pyx_v_array = __pyx_t_9;
   __pyx_t_9 = 0;
 
-  /* "pynvvl/nvvl.pyx":121
+  /* "pynvvl/nvvl.pyx":123
  * 
  *         cdef NVVL_PicLayer layer
  *         layer.type = PDT_FLOAT             # <<<<<<<<<<<<<<
  *         layer.data = <float*><size_t>array.data.ptr
- *         layer.desc.count = count
+ *         layer.index_map = NULL
  */
   __pyx_v_layer.type = PDT_FLOAT;
 
-  /* "pynvvl/nvvl.pyx":122
+  /* "pynvvl/nvvl.pyx":124
  *         cdef NVVL_PicLayer layer
  *         layer.type = PDT_FLOAT
  *         layer.data = <float*><size_t>array.data.ptr             # <<<<<<<<<<<<<<
+ *         layer.index_map = NULL
  *         layer.desc.count = count
- *         layer.desc.channels = channels
  */
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_array, __pyx_n_s_data); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 122, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_array, __pyx_n_s_data); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 124, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_ptr); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 122, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_ptr); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 124, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __pyx_t_10 = __Pyx_PyInt_As_size_t(__pyx_t_5); if (unlikely((__pyx_t_10 == (size_t)-1) && PyErr_Occurred())) __PYX_ERR(1, 122, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyInt_As_size_t(__pyx_t_5); if (unlikely((__pyx_t_10 == (size_t)-1) && PyErr_Occurred())) __PYX_ERR(1, 124, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_layer.data = ((float *)((size_t)__pyx_t_10));
 
-  /* "pynvvl/nvvl.pyx":123
+  /* "pynvvl/nvvl.pyx":125
  *         layer.type = PDT_FLOAT
  *         layer.data = <float*><size_t>array.data.ptr
+ *         layer.index_map = NULL             # <<<<<<<<<<<<<<
+ *         layer.desc.count = count
+ *         layer.desc.channels = channels
+ */
+  __pyx_v_layer.index_map = NULL;
+
+  /* "pynvvl/nvvl.pyx":126
+ *         layer.data = <float*><size_t>array.data.ptr
+ *         layer.index_map = NULL
  *         layer.desc.count = count             # <<<<<<<<<<<<<<
  *         layer.desc.channels = channels
  *         layer.desc.height = height
  */
-  __pyx_t_7 = __Pyx_PyInt_As_uint16_t(__pyx_v_count); if (unlikely((__pyx_t_7 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 123, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyInt_As_uint16_t(__pyx_v_count); if (unlikely((__pyx_t_7 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 126, __pyx_L1_error)
   __pyx_v_layer.desc.count = __pyx_t_7;
 
-  /* "pynvvl/nvvl.pyx":124
- *         layer.data = <float*><size_t>array.data.ptr
+  /* "pynvvl/nvvl.pyx":127
+ *         layer.index_map = NULL
  *         layer.desc.count = count
  *         layer.desc.channels = channels             # <<<<<<<<<<<<<<
  *         layer.desc.height = height
  *         layer.desc.width = width
  */
-  __pyx_t_11 = __Pyx_PyInt_As_uint8_t(__pyx_v_channels); if (unlikely((__pyx_t_11 == ((uint8_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 124, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_PyInt_As_uint8_t(__pyx_v_channels); if (unlikely((__pyx_t_11 == ((uint8_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 127, __pyx_L1_error)
   __pyx_v_layer.desc.channels = __pyx_t_11;
 
-  /* "pynvvl/nvvl.pyx":125
+  /* "pynvvl/nvvl.pyx":128
  *         layer.desc.count = count
  *         layer.desc.channels = channels
  *         layer.desc.height = height             # <<<<<<<<<<<<<<
@@ -1886,7 +1895,7 @@ static PyObject *__pyx_pf_6pynvvl_15NVVLVideoLoader_6read_sequence(struct __pyx_
  */
   __pyx_v_layer.desc.height = __pyx_v_height;
 
-  /* "pynvvl/nvvl.pyx":126
+  /* "pynvvl/nvvl.pyx":129
  *         layer.desc.channels = channels
  *         layer.desc.height = height
  *         layer.desc.width = width             # <<<<<<<<<<<<<<
@@ -1895,57 +1904,57 @@ static PyObject *__pyx_pf_6pynvvl_15NVVLVideoLoader_6read_sequence(struct __pyx_
  */
   __pyx_v_layer.desc.width = __pyx_v_width;
 
-  /* "pynvvl/nvvl.pyx":127
+  /* "pynvvl/nvvl.pyx":130
  *         layer.desc.height = height
  *         layer.desc.width = width
  *         layer.desc.scale_height = scale_height             # <<<<<<<<<<<<<<
  *         layer.desc.scale_width = scale_width
  *         layer.desc.horiz_flip = horiz_flip
  */
-  __pyx_t_7 = __Pyx_PyInt_As_uint16_t(__pyx_v_scale_height); if (unlikely((__pyx_t_7 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 127, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyInt_As_uint16_t(__pyx_v_scale_height); if (unlikely((__pyx_t_7 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 130, __pyx_L1_error)
   __pyx_v_layer.desc.scale_height = __pyx_t_7;
 
-  /* "pynvvl/nvvl.pyx":128
+  /* "pynvvl/nvvl.pyx":131
  *         layer.desc.width = width
  *         layer.desc.scale_height = scale_height
  *         layer.desc.scale_width = scale_width             # <<<<<<<<<<<<<<
  *         layer.desc.horiz_flip = horiz_flip
  *         layer.desc.normalized = normalized
  */
-  __pyx_t_7 = __Pyx_PyInt_As_uint16_t(__pyx_v_scale_width); if (unlikely((__pyx_t_7 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 128, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyInt_As_uint16_t(__pyx_v_scale_width); if (unlikely((__pyx_t_7 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 131, __pyx_L1_error)
   __pyx_v_layer.desc.scale_width = __pyx_t_7;
 
-  /* "pynvvl/nvvl.pyx":129
+  /* "pynvvl/nvvl.pyx":132
  *         layer.desc.scale_height = scale_height
  *         layer.desc.scale_width = scale_width
  *         layer.desc.horiz_flip = horiz_flip             # <<<<<<<<<<<<<<
  *         layer.desc.normalized = normalized
  * 
  */
-  __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_v_horiz_flip); if (unlikely((__pyx_t_12 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(1, 129, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_v_horiz_flip); if (unlikely((__pyx_t_12 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(1, 132, __pyx_L1_error)
   __pyx_v_layer.desc.horiz_flip = __pyx_t_12;
 
-  /* "pynvvl/nvvl.pyx":130
+  /* "pynvvl/nvvl.pyx":133
  *         layer.desc.scale_width = scale_width
  *         layer.desc.horiz_flip = horiz_flip
  *         layer.desc.normalized = normalized             # <<<<<<<<<<<<<<
  * 
  *         cdef NVVL_ColorSpace nvvl_color_space
  */
-  __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_v_normalized); if (unlikely((__pyx_t_12 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(1, 130, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_v_normalized); if (unlikely((__pyx_t_12 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(1, 133, __pyx_L1_error)
   __pyx_v_layer.desc.normalized = __pyx_t_12;
 
-  /* "pynvvl/nvvl.pyx":133
+  /* "pynvvl/nvvl.pyx":136
  * 
  *         cdef NVVL_ColorSpace nvvl_color_space
  *         if color_space == 'RGB':             # <<<<<<<<<<<<<<
  *             nvvl_color_space = ColorSpace_RGB
  *         elif color_space == 'YCbCr':
  */
-  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_color_space, __pyx_n_s_RGB, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(1, 133, __pyx_L1_error)
+  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_color_space, __pyx_n_s_RGB, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(1, 136, __pyx_L1_error)
   if (__pyx_t_2) {
 
-    /* "pynvvl/nvvl.pyx":134
+    /* "pynvvl/nvvl.pyx":137
  *         cdef NVVL_ColorSpace nvvl_color_space
  *         if color_space == 'RGB':
  *             nvvl_color_space = ColorSpace_RGB             # <<<<<<<<<<<<<<
@@ -1954,7 +1963,7 @@ static PyObject *__pyx_pf_6pynvvl_15NVVLVideoLoader_6read_sequence(struct __pyx_
  */
     __pyx_v_nvvl_color_space = ColorSpace_RGB;
 
-    /* "pynvvl/nvvl.pyx":133
+    /* "pynvvl/nvvl.pyx":136
  * 
  *         cdef NVVL_ColorSpace nvvl_color_space
  *         if color_space == 'RGB':             # <<<<<<<<<<<<<<
@@ -1964,17 +1973,17 @@ static PyObject *__pyx_pf_6pynvvl_15NVVLVideoLoader_6read_sequence(struct __pyx_
     goto __pyx_L4;
   }
 
-  /* "pynvvl/nvvl.pyx":135
+  /* "pynvvl/nvvl.pyx":138
  *         if color_space == 'RGB':
  *             nvvl_color_space = ColorSpace_RGB
  *         elif color_space == 'YCbCr':             # <<<<<<<<<<<<<<
  *             nvvl_color_space = ColorSpace_YCbCr
  *         layer.desc.color_space = nvvl_color_space
  */
-  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_color_space, __pyx_n_s_YCbCr, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(1, 135, __pyx_L1_error)
+  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_color_space, __pyx_n_s_YCbCr, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(1, 138, __pyx_L1_error)
   if (__pyx_t_2) {
 
-    /* "pynvvl/nvvl.pyx":136
+    /* "pynvvl/nvvl.pyx":139
  *             nvvl_color_space = ColorSpace_RGB
  *         elif color_space == 'YCbCr':
  *             nvvl_color_space = ColorSpace_YCbCr             # <<<<<<<<<<<<<<
@@ -1983,7 +1992,7 @@ static PyObject *__pyx_pf_6pynvvl_15NVVLVideoLoader_6read_sequence(struct __pyx_
  */
     __pyx_v_nvvl_color_space = ColorSpace_YCbCr;
 
-    /* "pynvvl/nvvl.pyx":135
+    /* "pynvvl/nvvl.pyx":138
  *         if color_space == 'RGB':
  *             nvvl_color_space = ColorSpace_RGB
  *         elif color_space == 'YCbCr':             # <<<<<<<<<<<<<<
@@ -1993,7 +2002,7 @@ static PyObject *__pyx_pf_6pynvvl_15NVVLVideoLoader_6read_sequence(struct __pyx_
   }
   __pyx_L4:;
 
-  /* "pynvvl/nvvl.pyx":137
+  /* "pynvvl/nvvl.pyx":140
  *         elif color_space == 'YCbCr':
  *             nvvl_color_space = ColorSpace_YCbCr
  *         layer.desc.color_space = nvvl_color_space             # <<<<<<<<<<<<<<
@@ -2002,7 +2011,7 @@ static PyObject *__pyx_pf_6pynvvl_15NVVLVideoLoader_6read_sequence(struct __pyx_
  */
   __pyx_v_layer.desc.color_space = __pyx_v_nvvl_color_space;
 
-  /* "pynvvl/nvvl.pyx":139
+  /* "pynvvl/nvvl.pyx":142
  *         layer.desc.color_space = nvvl_color_space
  * 
  *         layer.desc.stride.x = 1             # <<<<<<<<<<<<<<
@@ -2011,7 +2020,7 @@ static PyObject *__pyx_pf_6pynvvl_15NVVLVideoLoader_6read_sequence(struct __pyx_
  */
   __pyx_v_layer.desc.stride.x = 1;
 
-  /* "pynvvl/nvvl.pyx":140
+  /* "pynvvl/nvvl.pyx":143
  * 
  *         layer.desc.stride.x = 1
  *         layer.desc.stride.y = pitch / sizeof(float)             # <<<<<<<<<<<<<<
@@ -2021,11 +2030,11 @@ static PyObject *__pyx_pf_6pynvvl_15NVVLVideoLoader_6read_sequence(struct __pyx_
   __pyx_t_10 = (sizeof(float));
   if (unlikely(__pyx_t_10 == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "integer division or modulo by zero");
-    __PYX_ERR(1, 140, __pyx_L1_error)
+    __PYX_ERR(1, 143, __pyx_L1_error)
   }
   __pyx_v_layer.desc.stride.y = (__pyx_v_pitch / __pyx_t_10);
 
-  /* "pynvvl/nvvl.pyx":141
+  /* "pynvvl/nvvl.pyx":144
  *         layer.desc.stride.x = 1
  *         layer.desc.stride.y = pitch / sizeof(float)
  *         layer.desc.stride.c = layer.desc.stride.y * height             # <<<<<<<<<<<<<<
@@ -2034,23 +2043,23 @@ static PyObject *__pyx_pf_6pynvvl_15NVVLVideoLoader_6read_sequence(struct __pyx_
  */
   __pyx_v_layer.desc.stride.c = (__pyx_v_layer.desc.stride.y * __pyx_v_height);
 
-  /* "pynvvl/nvvl.pyx":142
+  /* "pynvvl/nvvl.pyx":145
  *         layer.desc.stride.y = pitch / sizeof(float)
  *         layer.desc.stride.c = layer.desc.stride.y * height
  *         layer.desc.stride.n = layer.desc.stride.c * channels             # <<<<<<<<<<<<<<
  * 
  *         #cudaMallocPitch(
  */
-  __pyx_t_5 = __Pyx_PyInt_FromSize_t(__pyx_v_layer.desc.stride.c); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 142, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_FromSize_t(__pyx_v_layer.desc.stride.c); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 145, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_9 = PyNumber_Multiply(__pyx_t_5, __pyx_v_channels); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 142, __pyx_L1_error)
+  __pyx_t_9 = PyNumber_Multiply(__pyx_t_5, __pyx_v_channels); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 145, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_10 = __Pyx_PyInt_As_size_t(__pyx_t_9); if (unlikely((__pyx_t_10 == (size_t)-1) && PyErr_Occurred())) __PYX_ERR(1, 142, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyInt_As_size_t(__pyx_t_9); if (unlikely((__pyx_t_10 == (size_t)-1) && PyErr_Occurred())) __PYX_ERR(1, 145, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __pyx_v_layer.desc.stride.n = __pyx_t_10;
 
-  /* "pynvvl/nvvl.pyx":148
+  /* "pynvvl/nvvl.pyx":151
  *         #    layer.desc.height * count * channels)
  * 
  *         nvvl_set_layer(sequence, &layer, 'pixels')             # <<<<<<<<<<<<<<
@@ -2059,40 +2068,44 @@ static PyObject *__pyx_pf_6pynvvl_15NVVLVideoLoader_6read_sequence(struct __pyx_
  */
   nvvl_set_layer(__pyx_v_sequence, (&__pyx_v_layer), ((char const *)"pixels"));
 
-  /* "pynvvl/nvvl.pyx":150
+  /* "pynvvl/nvvl.pyx":153
  *         nvvl_set_layer(sequence, &layer, 'pixels')
  * 
  *         nvvl_read_sequence(self.handle, filename.encode('utf-8'), frame, count)             # <<<<<<<<<<<<<<
- *         nvvl_receive_frames(self.handle, sequence)
- *         nvvl_free_sequence(sequence)
+ *         nvvl_receive_frames_sync(self.handle, sequence)
+ * 
  */
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_filename, __pyx_n_s_encode); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 150, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_filename, __pyx_n_s_encode); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 153, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 150, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 153, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __pyx_t_13 = __Pyx_PyObject_AsString(__pyx_t_5); if (unlikely((!__pyx_t_13) && PyErr_Occurred())) __PYX_ERR(1, 150, __pyx_L1_error)
-  __pyx_t_14 = __Pyx_PyInt_As_int(__pyx_v_frame); if (unlikely((__pyx_t_14 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 150, __pyx_L1_error)
-  __pyx_t_15 = __Pyx_PyInt_As_int(__pyx_v_count); if (unlikely((__pyx_t_15 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 150, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_AsString(__pyx_t_5); if (unlikely((!__pyx_t_13) && PyErr_Occurred())) __PYX_ERR(1, 153, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyInt_As_int(__pyx_v_frame); if (unlikely((__pyx_t_14 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 153, __pyx_L1_error)
+  __pyx_t_15 = __Pyx_PyInt_As_int(__pyx_v_count); if (unlikely((__pyx_t_15 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 153, __pyx_L1_error)
   nvvl_read_sequence(__pyx_v_self->handle, __pyx_t_13, __pyx_t_14, __pyx_t_15);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "pynvvl/nvvl.pyx":151
+  /* "pynvvl/nvvl.pyx":154
  * 
  *         nvvl_read_sequence(self.handle, filename.encode('utf-8'), frame, count)
- *         nvvl_receive_frames(self.handle, sequence)             # <<<<<<<<<<<<<<
- *         nvvl_free_sequence(sequence)
+ *         nvvl_receive_frames_sync(self.handle, sequence)             # <<<<<<<<<<<<<<
+ * 
+ *         return array
  */
-  (void)(nvvl_receive_frames(__pyx_v_self->handle, __pyx_v_sequence));
+  (void)(nvvl_receive_frames_sync(__pyx_v_self->handle, __pyx_v_sequence));
 
-  /* "pynvvl/nvvl.pyx":152
- *         nvvl_read_sequence(self.handle, filename.encode('utf-8'), frame, count)
- *         nvvl_receive_frames(self.handle, sequence)
- *         nvvl_free_sequence(sequence)             # <<<<<<<<<<<<<<
+  /* "pynvvl/nvvl.pyx":156
+ *         nvvl_receive_frames_sync(self.handle, sequence)
+ * 
+ *         return array             # <<<<<<<<<<<<<<
  */
-  nvvl_free_sequence(__pyx_v_sequence);
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(__pyx_v_array);
+  __pyx_r = __pyx_v_array;
+  goto __pyx_L0;
 
-  /* "pynvvl/nvvl.pyx":105
+  /* "pynvvl/nvvl.pyx":107
  *         return nvvl_frame_count(self.handle, filename.encode('utf-8'))
  * 
  *     def read_sequence(             # <<<<<<<<<<<<<<
@@ -2101,8 +2114,6 @@ static PyObject *__pyx_pf_6pynvvl_15NVVLVideoLoader_6read_sequence(struct __pyx_
  */
 
   /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
@@ -2399,25 +2410,25 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "pynvvl/nvvl.pyx":103
+  /* "pynvvl/nvvl.pyx":105
  * 
  *     def frame_count(self, filename):
  *         return nvvl_frame_count(self.handle, filename.encode('utf-8'))             # <<<<<<<<<<<<<<
  * 
  *     def read_sequence(
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_utf_8); if (unlikely(!__pyx_tuple_)) __PYX_ERR(1, 103, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_utf_8); if (unlikely(!__pyx_tuple_)) __PYX_ERR(1, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "pynvvl/nvvl.pyx":150
+  /* "pynvvl/nvvl.pyx":153
  *         nvvl_set_layer(sequence, &layer, 'pixels')
  * 
  *         nvvl_read_sequence(self.handle, filename.encode('utf-8'), frame, count)             # <<<<<<<<<<<<<<
- *         nvvl_receive_frames(self.handle, sequence)
- *         nvvl_free_sequence(sequence)
+ *         nvvl_receive_frames_sync(self.handle, sequence)
+ * 
  */
-  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_s_utf_8); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(1, 150, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_s_utf_8); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(1, 153, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
@@ -2492,13 +2503,13 @@ static int __Pyx_modinit_type_init_code(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
-  if (PyType_Ready(&__pyx_type_6pynvvl_NVVLVideoLoader) < 0) __PYX_ERR(1, 92, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6pynvvl_NVVLVideoLoader) < 0) __PYX_ERR(1, 94, __pyx_L1_error)
   __pyx_type_6pynvvl_NVVLVideoLoader.tp_print = 0;
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_6pynvvl_NVVLVideoLoader.tp_dictoffset && __pyx_type_6pynvvl_NVVLVideoLoader.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_6pynvvl_NVVLVideoLoader.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (PyObject_SetAttrString(__pyx_m, "NVVLVideoLoader", (PyObject *)&__pyx_type_6pynvvl_NVVLVideoLoader) < 0) __PYX_ERR(1, 92, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6pynvvl_NVVLVideoLoader) < 0) __PYX_ERR(1, 92, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "NVVLVideoLoader", (PyObject *)&__pyx_type_6pynvvl_NVVLVideoLoader) < 0) __PYX_ERR(1, 94, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6pynvvl_NVVLVideoLoader) < 0) __PYX_ERR(1, 94, __pyx_L1_error)
   __pyx_ptype_6pynvvl_NVVLVideoLoader = &__pyx_type_6pynvvl_NVVLVideoLoader;
   __Pyx_RefNannyFinishContext();
   return 0;

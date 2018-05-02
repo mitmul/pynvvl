@@ -76,6 +76,8 @@ cdef extern from "VideoLoader.h":
         VideoLoaderHandle loader, const char* filename, int frame, int count)
     cdef PictureSequenceHandle nvvl_receive_frames(
         VideoLoaderHandle loader, PictureSequenceHandle sequence);
+    cdef PictureSequenceHandle nvvl_receive_frames_sync(
+        VideoLoaderHandle loader, PictureSequenceHandle sequence);
 
     cdef struct Size:
         uint16_t width
@@ -120,6 +122,7 @@ cdef class NVVLVideoLoader:
         cdef NVVL_PicLayer layer
         layer.type = PDT_FLOAT
         layer.data = <float*><size_t>array.data.ptr
+        layer.index_map = NULL
         layer.desc.count = count
         layer.desc.channels = channels
         layer.desc.height = height
@@ -148,5 +151,6 @@ cdef class NVVLVideoLoader:
         nvvl_set_layer(sequence, &layer, 'pixels')
 
         nvvl_read_sequence(self.handle, filename.encode('utf-8'), frame, count)
-        nvvl_receive_frames(self.handle, sequence)
-        #nvvl_free_sequence(sequence)
+        nvvl_receive_frames_sync(self.handle, sequence)
+
+        return array
