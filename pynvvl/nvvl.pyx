@@ -162,4 +162,4 @@ cdef class NVVLVideoLoader:
         nvvl_receive_frames_sync(self.handle, sequence)
         print('receive_frames')
         nvvl_free_sequence(sequence)
-        #return array
+        return array
