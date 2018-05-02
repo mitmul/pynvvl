@@ -89,9 +89,11 @@ cdef extern from "VideoLoader.h":
 cdef class NVVLVideoLoader:
 
     cdef VideoLoaderHandle handle
+    cdef int device_id
 
     def __init__(self, device_id):
         self.handle = nvvl_create_video_loader(device_id)
+        self.device_id = device_id
 
     def __deaclloc__(self):
         nvvl_destroy_video_loader(self.handle)
@@ -112,8 +114,11 @@ cdef class NVVLVideoLoader:
         cdef uint16_t width = size.width if crop_width is None else crop_width
         cdef uint16_t height = size.height if crop_height is None else crop_height
 
-        array = cupy.zeros((count, channels, height, width), dtype=cupy.float32)
-        array = cupy.ascontiguousarray(array)
+        with cupy.cuda.Device(self.device_id) as d:
+            array = cupy.empty(
+                (count, channels, height, width), dtype=cupy.float32)
+            array = cupy.ascontiguousarray(array)
+            d.synchronize()
 
         cdef NVVL_PicLayer layer
         layer.type = PDT_FLOAT
@@ -149,17 +154,14 @@ cdef class NVVLVideoLoader:
             nvvl_scale_method = ScaleMethod_Linear
         layer.desc.scale_method = nvvl_scale_method
 
-        layer.desc.stride.x = sizeof(float)
+        layer.desc.stride.x = 1
         layer.desc.stride.y = width * layer.desc.stride.x
         layer.desc.stride.c = layer.desc.stride.y * height
         layer.desc.stride.n = layer.desc.stride.c * channels
         
         cdef string name = 'pixels'.encode('utf-8')
         nvvl_set_layer(sequence, &layer, name.c_str())
-        print('set_layer')
         nvvl_read_sequence(self.handle, filename.encode('utf-8'), frame, count)
-        print('read_sequence')
         nvvl_receive_frames_sync(self.handle, sequence)
-        print('receive_frames')
         nvvl_free_sequence(sequence)
         return array

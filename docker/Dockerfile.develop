@@ -1,0 +1,15 @@
+ARG CUDA_VERSION=9.0
+FROM mitmul/pynvvl:cuda-${CUDA_VERSION}
+
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-dev \
+    python3-pip \
+    python3-tk \
+    gawk
+
+RUN pip3 install \
+    cython \
+    numpy \
+    matplotlib
+RUN echo ${CUDA_VERSION} | sed -E "s/\.//g" | awk '{print substr ($0, 0, 2)}' | xargs -I{} pip3 install cupy-cuda{}
