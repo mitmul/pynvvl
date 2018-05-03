@@ -7,10 +7,13 @@ PyNVVL is a thin wrapper of NVIDIA Video Loader (NVVL). This packages enables yo
 
 - CuPy v4.0.0
 
-
 ## Install
 
-- pip install [WHEEL PATH]
+```
+pip install [WHEEL URL]
+```
+
+
 
 ## Usage
 

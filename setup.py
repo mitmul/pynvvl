@@ -96,7 +96,6 @@ setup(
     license='MIT',
     packages=['pynvvl'],
     package_data=package_data,
-    # install_requires=['cupy>=4.0.0'],
     cmdclass={'build_ext': build_ext},
     ext_modules=extensions,
 )
