@@ -5,7 +5,6 @@ import os
 import shutil
 
 from Cython.Distutils import build_ext
-import numpy as np
 from setuptools import Extension
 from setuptools import setup
 import subprocess
@@ -25,7 +24,6 @@ def create_extensions():
         'docker/include',
         '/usr/local/cuda/include',
         cpath,
-        np.get_include()
     ]
 
     ld_library_path = os.environ['LD_LIBRARY_PATH'] \
