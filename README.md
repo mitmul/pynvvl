@@ -13,6 +13,13 @@ PyNVVL is a thin wrapper of NVIDIA Video Loader (NVVL). This packages enables yo
 pip install [WHEEL URL]
 ```
 
+Replace `[WHEEL URL]` with one of the wheels below:
+
+### Python 3.5
+
+- CUDA 8.0: ``
+- CUDA 9.0: ``
+- CUDA 9.1: ``
 
 
 ## Usage
