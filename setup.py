@@ -88,7 +88,7 @@ extensions = create_extensions()
 
 
 setup(
-    name='pynvvl',
+    name='pynvvl-cuda{}'.format(CUDA_VERSION.replace('.', '')),
     url='https://github.com/mitmul/pynvvl',
     version='0.0.1',
     author='Shunta Saito',

@@ -1,11 +1,11 @@
 PyNVVL
 ======
 
-PyNVVL is a thin wrapper of NVIDIA Video Loader (NVVL). This packages enables you to load videos directoly to GPU memory and access them as CuPy ndarrays with zero copy.
+PyNVVL is a thin wrapper of [NVIDIA Video Loader (NVVL)](https://github.com/NVIDIA/nvvl). This package enables you to load videos directoly to GPU memory and access them as [CuPy](https://github.com/cupy/cupy) ndarrays with zero copy.
 
 ## Requirements
 
-- CuPy v4.0.0
+- [CuPy](https://github.com/cupy/cupy) v4.0.0
 
 ## Install
 
@@ -17,10 +17,9 @@ Replace `[WHEEL URL]` with one of the wheels below:
 
 ### Python 3.5
 
-- CUDA 8.0: ``
-- CUDA 9.0: ``
-- CUDA 9.1: ``
-
+- CUDA 8.0: `https://github.com/mitmul/pynvvl/releases/download/v0.0.1/pynvvl_cuda80-0.0.1-cp35-cp35m-linux_x86_64.whl`
+- CUDA 9.0: `https://github.com/mitmul/pynvvl/releases/download/v0.0.1/pynvvl_cuda90-0.0.1-cp35-cp35m-linux_x86_64.whl`
+- CUDA 9.1: `https://github.com/mitmul/pynvvl/releases/download/v0.0.1/pynvvl_cuda91-0.0.1-cp35-cp35m-linux_x86_64.whl`
 
 ## Usage
 
@@ -57,6 +56,8 @@ plt.savefig('examples/sample.png')
 ```
 
 ![](examples/sample.png)
+
+This video is from the Moments-In-Time dataset.
 
 ## Transformation Options
 
