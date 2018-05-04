@@ -3,6 +3,7 @@ pynvvl/*.cpp
 !examples/sample.png
 pynvvl/_lib/
 docker/include/
+examples/*.out
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

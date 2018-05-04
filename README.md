@@ -5,21 +5,23 @@ PyNVVL is a thin wrapper of [NVIDIA Video Loader (NVVL)](https://github.com/NVID
 
 ## Requirements
 
+- Python 2.7.6+, 3.4.7+, 3.5.1+, 3.6.0+
 - [CuPy](https://github.com/cupy/cupy) v4.0.0
 
-## Install
+## Install the pre-built binary
 
+Please choose a right package depending on your CUDA version.
+
+```bash
+# [For CUDA 8.0]
+pip install pynvvl-cuda80
+
+# [For CUDA 9.0]
+pip install pynvvl-cuda90
+
+# [For CUDA 9.1]
+pip install pynvvl-cuda91
 ```
-pip install [WHEEL URL]
-```
-
-Replace `[WHEEL URL]` with one of the wheels below:
-
-### Python 3.5
-
-- CUDA 8.0: `https://github.com/mitmul/pynvvl/releases/download/v0.0.1/pynvvl_cuda80-0.0.1-cp35-cp35m-linux_x86_64.whl`
-- CUDA 9.0: `https://github.com/mitmul/pynvvl/releases/download/v0.0.1/pynvvl_cuda90-0.0.1-cp35-cp35m-linux_x86_64.whl`
-- CUDA 9.1: `https://github.com/mitmul/pynvvl/releases/download/v0.0.1/pynvvl_cuda91-0.0.1-cp35-cp35m-linux_x86_64.whl`
 
 ## Usage
 
@@ -103,7 +105,7 @@ Loads the video from disk and returns it as a CuPy ndarray.
             yuv 4:2:0 to 4:4:4. It should be 'Linear' currently.
 ```
 
-## Build wheels
+## How to build wheels
 
 ### Requirements for build
 
@@ -114,5 +116,5 @@ Loads the video from disk and returns it as a CuPy ndarray.
 bash docker/build_docker.sh
 sudo rm -rf docker/lib
 bash docker/build_nvvl.sh
-bash docker/build_wheels.sh
+python docker/build_wheels.py
 ```

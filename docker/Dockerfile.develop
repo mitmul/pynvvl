@@ -12,4 +12,6 @@ RUN pip3 install \
     cython \
     numpy \
     matplotlib
-RUN echo ${CUDA_VERSION} | sed -E "s/\.//g" | awk '{print substr ($0, 0, 2)}' | xargs -I{} pip3 install cupy-cuda{}
+
+ARG CUPY_PACKAGE_NAME
+RUN pip3 install ${CUPY_PACKAGE_NAME}
