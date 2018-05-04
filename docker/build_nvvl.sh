@@ -4,9 +4,14 @@ build_libnvvl() {
     nvidia-docker run \
     --rm \
     -v $PWD/docker:/root/build -t mitmul/pynvvl:cuda-$1 \
-    bash -c "find / -name \"*libnvcuvid.so.1\" | \
-    xargs -I{} ln -s {} /usr/local/lib/libnvcuvid.so && \
-    if [ ! -d /root/build/lib/cuda-$1 ]; then mkdir -p /root/build/lib/cuda-$1; fi && \
+    bash -c " \
+    if [ ! -f /usr/local/lib/libnvcuvid.so ]; then \
+        find / -name \"*libnvcuvid.so.1\" | \
+        xargs -I{} ln -s {} /usr/local/lib/libnvcuvid.so; \
+    fi && \
+    if [ ! -d /root/build/lib/cuda-$1 ]; then \
+        mkdir -p /root/build/lib/cuda-$1; \
+    fi && \
     cp -r /usr/local/lib /root/build/lib/cuda-$1 && \
     mv /root/build/lib/cuda-$1/lib/* /root/build/lib/cuda-$1/ && \
     rm -rf /root/build/lib/cuda-$1/lib && \

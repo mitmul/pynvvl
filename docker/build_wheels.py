@@ -71,7 +71,7 @@ def build_docker_image(cuda_version, tag, test):
     ])
 
 
-def build_wheels(cuda_version, tag):
+def build_wheels(cuda_version):
     for python_version in PYTHON_VERSIONS.keys():
         print('-' * 10,
               'Building for Python {}'.format(python_version),
@@ -91,7 +91,7 @@ def build_wheels(cuda_version, tag):
             --package-name {package_name} \
             "'.format(
                 source_dir=os.getcwd(),
-                tag=tag,
+                tag=WHEEL_CONFIGS[cuda_version]['tag'],
                 python_version=python_version,
                 cuda_version=cuda_version,
                 package_name='pynvvl_cuda{}'.format(
@@ -113,26 +113,23 @@ def build_wheels(cuda_version, tag):
         done; \
         "'.format(
             source_dir=os.getcwd(),
-            tag=tag,
+            tag=WHEEL_CONFIGS[cuda_version]['tag'],
             cuda_version=cuda_version,
         ), shell=True)
 
-    for python_version in PYTHON_VERSIONS.keys():
+    for python_version, tags in PYTHON_VERSIONS.items():
         print('-' * 10,
               'Testing wheel for Python {}'.format(python_version),
               '-' * 10)
-        if python_version.startswith('2.7'):
-            package_python = 'cp27-cp27mu'
-        elif python_version.startswith('3.4'):
-            package_python = 'cp34-cp34m'
-        elif python_version.startswith('3.5'):
-            package_python = 'cp35-cp35m'
-        elif python_version.startswith('3.6'):
-            package_python = 'cp36-cp36m'
-        else:
-            raise ValueError('unknown python version')
+        package_python = '{}-{}'.format(
+            tags['python_tag'], tags['linux_abi_tag'])
 
         # Test the wheel
+        wheel_name = '{}-{}-{}-manylinux1_x86_64.whl'.format(
+            'pynvvl_cuda{}'.format(cuda_version.replace('.', '')),
+            PYNVVL_VERSION,
+            package_python
+        )
         subprocess.call(
             'nvidia-docker run'
             ' --rm'
@@ -142,19 +139,17 @@ def build_wheels(cuda_version, tag):
             ' bash -c'
             ' " \
             pyenv global {python_version} && pyenv rehash && \
-            pip install /wheels/{package_name}-{pynvvl_version}-{package_python}-manylinux1_x86_64.whl && \
+            pip install /wheels/{wheel_name} && \
             cd / && python examples/simple_load.py \
-            >> /examples/cuda-{cuda_version}_python-{python_version}.out \
+            > /examples/cuda-{cuda_version}_python-{python_version}.out \
             "'.format(
                 source_dir=os.getcwd(),
-                tag=tag,
+                tag=WHEEL_CONFIGS[cuda_version]['test'],
                 cuda_version=cuda_version,
-                pynvvl_version=PYNVVL_VERSION,
                 python_version=python_version,
-                package_python=package_python,
-                package_name='pynvvl_cuda{}'.format(
-                    cuda_version.replace('.', '')),
+                wheel_name=wheel_name,
             ), shell=True)
+
 
 # Build Docker images
 for cuda_version, wheel_config in WHEEL_CONFIGS.items():
@@ -163,5 +158,5 @@ for cuda_version, wheel_config in WHEEL_CONFIGS.items():
 # Build wheels
 for cuda_version, wheel_config in WHEEL_CONFIGS.items():
     print('-' * 10, 'Building for CUDA {}'.format(cuda_version), '-' * 10)
-    build_wheels(cuda_version, wheel_config['tag'])
+    build_wheels(cuda_version)
     print('=' * 30)

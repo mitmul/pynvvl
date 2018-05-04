@@ -1,3 +1,6 @@
+from pynvvl._nvvl import NVVLVideoLoader  # NOQA
+
+
 __copyright__    = 'Copyright (C) 2018 Shunta Saito'
 __version__      = '0.0.1'
 __license__      = 'MIT License'

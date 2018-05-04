@@ -60,6 +60,7 @@ RUN for VERSION in ${python_versions}; do \
         pip install -U pip setuptools && \
         pip install argparse && \
         pip install Cython==${cython_version} wheel auditwheel && \
-        pip install numpy ${cupy_package_name}; \
+        pip install numpy matplotlib ${cupy_package_name}; \
     done;
 
+ENV MPLBACKEND Agg

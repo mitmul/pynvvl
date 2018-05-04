@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from pkg_resources import get_distribution
 import argparse
 import os
 import shutil
@@ -10,6 +9,7 @@ import sys
 import sysconfig
 
 from Cython.Distutils import build_ext
+from pkg_resources import get_distribution
 from setuptools import Extension
 from setuptools import setup
 
@@ -20,7 +20,7 @@ CUDA_VERSION = subprocess.check_output(
 
 def create_extensions():
     sourcefiles = [
-        'pynvvl/nvvl.pyx',
+        'pynvvl/_nvvl.pyx',
     ]
 
     # List up include paths
@@ -48,12 +48,12 @@ def create_extensions():
 
     # RPATH which will be set to pynvvl.so
     rpath = [
-        '$ORIGIN/pynvvl/_lib',
+        '$ORIGIN/_lib',
     ]
 
     extensions = [
         Extension(
-            'pynvvl',
+            'pynvvl._nvvl',
             sourcefiles,
             include_dirs=include_dirs,
             library_dirs=library_dirs,
@@ -121,6 +121,9 @@ setup(
     package_data=package_data,
     install_requires=[
         '{}>=4.0.0'.format(cupy_package_name),
+    ],
+    setup_requires=[
+        'cython>=0.27.3',
     ],
     ext_modules=extensions,
     cmdclass={'build_ext': build_ext},
