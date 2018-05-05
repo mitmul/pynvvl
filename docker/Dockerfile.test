@@ -24,7 +24,8 @@ RUN apt-get update && apt-get install -y \
     libncursesw5-dev \
     xz-utils \
     tk-dev \
-    git
+    git \
+    ffmpeg
 
 WORKDIR /root
 
@@ -59,7 +60,7 @@ RUN for VERSION in ${python_versions}; do \
         pip install -U pip setuptools && \
         pip install argparse && \
         pip install Cython==${cython_version} wheel auditwheel && \
-        pip install numpy matplotlib ${cupy_package_name}; \
+        pip install numpy matplotlib imageio ${cupy_package_name}; \
     done;
 
 ENV MPLBACKEND Agg
