@@ -75,6 +75,8 @@ plt.savefig('examples/sample.png')
 
 This video is `flickr-2-6-3-3-5-2-7-6-5626335276_4.mp4` from the Moments-In-Time dataset.
 
+Note that cropping is performed after scaling. In the above example, NVVL performs scaling up from 256 x 256 to 512 x 512 first, then cropping the region [60:60 + 385, 0:512]. See the following section to know more about the transformation options.
+
 ## Transformation Options
 
 `pynvvl.NVVLVideoLoader.read_sequence` can take some options to specify the color space, the value range, and what transformations you want to perform to the video.
