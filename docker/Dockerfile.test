@@ -52,7 +52,6 @@ RUN pyenv versions
 # Install Python libraries.
 ARG cython_version
 ARG cupy_version
-ARG pynvvl_version
 ARG cupy_package_name
 RUN for VERSION in ${python_versions}; do \
         echo "Installing libraries on Python ${VERSION}..." && \

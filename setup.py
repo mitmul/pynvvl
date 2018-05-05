@@ -113,7 +113,7 @@ print('=' * 30)
 setup(
     name=args.package_name,
     url='https://github.com/mitmul/pynvvl',
-    version='0.0.1',
+    version='0.0.2a1',
     author='Shunta Saito',
     author_email='shunta.saito@gmail.com',
     license='MIT License',
