@@ -15,13 +15,16 @@ print('Number of frames:', n_frames)
 video = loader.read_sequence(
     'examples/sample.mp4',
     horiz_flip=True,
-    crop_y=30,
-    crop_height=190,
-    scale_method='Nearest',
+    scale_height=512,
+    scale_width=512,
+    crop_y=60,
+    crop_height=385,
+    crop_width=512,
+    scale_method='Linear',
     normalized=True
 )
 
-print(video.shape)  # => (91, 3, 256, 256): (n_frames, channels, height, width)
+print(video.shape)  # => (91, 3, 385, 512): (n_frames, channels, height, width)
 print(video.dtype)  # => float32
 
 # Get the first frame as numpy array
