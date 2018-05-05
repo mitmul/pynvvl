@@ -118,9 +118,5 @@ Loads the video from disk and returns it as a CuPy ndarray.
 - nvidia-docker (v1/v2)
 
 ```
-bash docker/build_docker.sh
-sudo rm -rf docker/lib
-bash docker/build_nvvl.sh
-sudo rm -rf build dist *.egg-info examples/*.txt examples/*.png
-python docker/build_wheels.py
+bash docker/build_wheels.sh
 ```
