@@ -1,5 +1,9 @@
 PyNVVL
 ======
+[![pypi-pynvvl-cuda80](https://img.shields.io/pypi/v/pynvvl-cuda80.svg)](https://pypi.org/project/pynvvl-cuda80)]
+[![pypi-pynvvl-cuda90](https://img.shields.io/pypi/v/pynvvl-cuda90.svg)](https://pypi.org/project/pynvvl-cuda90)]
+[![pypi-pynvvl-cuda91](https://img.shields.io/pypi/v/pynvvl-cuda91.svg)](https://pypi.org/project/pynvvl-cuda91)]
+[![GitHub license](https://img.shields.io/github/license/mitmul/pynvvl.svg)](https://github.com/mitmul/pynvvl)
 
 PyNVVL is a thin wrapper of [NVIDIA Video Loader (NVVL)](https://github.com/NVIDIA/nvvl). This package enables you to load videos directoly to GPU memory and access them as [CuPy](https://github.com/cupy/cupy) ndarrays with zero copy.
 
@@ -118,9 +122,5 @@ Loads the video from disk and returns it as a CuPy ndarray.
 - nvidia-docker (v1/v2)
 
 ```
-bash docker/build_docker.sh
-sudo rm -rf docker/lib
-bash docker/build_nvvl.sh
-sudo rm -rf build dist *.egg-info
-python docker/build_wheels.py
+bash docker/build_wheels.sh
 ```
