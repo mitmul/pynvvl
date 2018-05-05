@@ -1,5 +1,5 @@
 ARG cuda_version
-FROM nvidia/cuda:${cuda_version}-devel-ubuntu16.04
+FROM mitmul/pynvvl:cuda-${cuda_version}
 
 ENV NVIDIA_DRIVER_CAPABILITIES=video,compute,utility
 
@@ -51,15 +51,15 @@ RUN pyenv versions
 
 # Install Python libraries.
 ARG cython_version
-ARG cupy_version
 ARG cupy_package_name
+ARG cupy_version
 RUN for VERSION in ${python_versions}; do \
         echo "Installing libraries on Python ${VERSION}..." && \
         pyenv global ${VERSION} && \
         pip install -U pip setuptools && \
         pip install argparse && \
         pip install Cython==${cython_version} wheel auditwheel && \
-        pip install numpy matplotlib ${cupy_package_name}; \
+        pip install ${cupy_package_name}==${cupy_version} && \
+        pip freeze; \
     done;
 
-ENV MPLBACKEND Agg
