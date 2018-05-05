@@ -5,7 +5,7 @@ PyNVVL
 [![pypi-pynvvl-cuda91](https://img.shields.io/pypi/v/pynvvl-cuda91.svg)](https://pypi.org/project/pynvvl-cuda91)
 [![GitHub license](https://img.shields.io/github/license/mitmul/pynvvl.svg)](https://github.com/mitmul/pynvvl)
 
-PyNVVL is a thin wrapper of [NVIDIA Video Loader (NVVL)](https://github.com/NVIDIA/nvvl). This package enables you to load videos directoly to GPU memory and access them as [CuPy](https://github.com/cupy/cupy) ndarrays with zero copy. The pre-built binaries of PyNVVL includes NVVL itself, so you do not need to install NVVL.
+PyNVVL is a thin wrapper of [NVIDIA Video Loader (NVVL)](https://github.com/NVIDIA/nvvl). This package enables you to load videos directoly to GPU memory and access them as [CuPy](https://github.com/cupy/cupy) ndarrays with zero copy. The pre-built binaries of PyNVVL include NVVL itself, so you do not need to install NVVL.
 
 ## Requirements
 
