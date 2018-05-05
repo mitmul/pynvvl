@@ -29,6 +29,8 @@ time_imageio = []
 for _ in range(N):
     st = time.time()
     video = imageio.mimread(video_fn)
-    video = cp.asarray(video)
+    with cp.cuda.Device(0) as d:
+        video = cp.array(video)
+        d.synchronize()
     time_imageio.append(time.time() - st)
 print('ImageIO: {} sec'.format(np.mean(time_imageio)))
