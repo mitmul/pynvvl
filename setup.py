@@ -110,12 +110,16 @@ print('=' * 30)
 print('CuPy Package Name:', cupy_package_name)
 print('=' * 30)
 
+description = \
+    'PyNVVL: A Python wrapper for NVIDIA Video Loader (NVVL) with CuPy'
+
 setup(
     name=args.package_name,
     url='https://github.com/mitmul/pynvvl',
-    version='0.0.2a1',
+    version='0.0.2a2',
     author='Shunta Saito',
     author_email='shunta.saito@gmail.com',
+    description=description,
     license='MIT License',
     packages=['pynvvl'],
     package_data=package_data,

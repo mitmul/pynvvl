@@ -3,7 +3,7 @@ import subprocess
 
 CYTHON_VERSION = '0.27.3'
 CUPY_VERSION = '4.0.0'
-PYNVVL_VERSION = '0.0.2a1'
+PYNVVL_VERSION = '0.0.2a2'
 
 WHEEL_CONFIGS = {
     '8.0': {
@@ -141,7 +141,9 @@ def build_wheels(cuda_version):
             pyenv global {python_version} && pyenv rehash && \
             pip install /wheels/{wheel_name} && \
             cd / && python examples/simple_load.py \
-            > /examples/cuda-{cuda_version}_python-{python_version}.txt \
+            > /examples/cuda-{cuda_version}_python-{python_version}.txt && \
+            mv /examples/sample.png \
+            /examples/sample_cuda-{cuda_version}_python-{python_version}.png \
             "'.format(
                 source_dir=os.getcwd(),
                 tag=WHEEL_CONFIGS[cuda_version]['test'],

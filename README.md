@@ -121,6 +121,6 @@ Loads the video from disk and returns it as a CuPy ndarray.
 bash docker/build_docker.sh
 sudo rm -rf docker/lib
 bash docker/build_nvvl.sh
-sudo rm -rf build dist *.egg-info
+sudo rm -rf build dist *.egg-info examples/*.txt examples/*.png
 python docker/build_wheels.py
 ```
