@@ -41,7 +41,7 @@ import pynvvl
 import matplotlib.pyplot as plt
 
 # Create NVVLVideoLoader object
-loader = pynvvl.NVVLVideoLoader(device_id=0)
+loader = pynvvl.NVVLVideoLoader(device_id=0, log_level='error')
 
 # Show the number of frames in the video
 n_frames = loader.frame_count('examples/sample.mp4')
@@ -71,11 +71,26 @@ plt.imshow(frame)
 plt.savefig('examples/sample.png')
 ```
 
-![](examples/sample.png)
+![](https://github.com/mitmul/pynvvl/raw/master/examples/sample.png)
 
 This video is `flickr-2-6-3-3-5-2-7-6-5626335276_4.mp4` from the Moments-In-Time dataset.
 
 Note that cropping is performed after scaling. In the above example, NVVL performs scaling up from 256 x 256 to 512 x 512 first, then cropping the region [60:60 + 385, 0:512]. See the following section to know more about the transformation options.
+
+## VideoLoader options
+
+Please specify the GPU device id when you create a `NVVLVideoLoader` object.
+You can also specify the logging level with a argument `log_level` for the constructor of `NVVLVideoLoader`.
+
+```
+Wrapper of NVVL VideoLoader
+
+    Args:
+        device_id (int): Specify the device id used to load a video.
+        log_level (str): Logging level which should be either 'debug',
+            'info', 'warn', 'error', or 'none'.
+            Logs with levels >= log_level is shown. The default is 'warn'.
+```
 
 ## Transformation Options
 

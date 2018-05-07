@@ -116,10 +116,12 @@ description = \
 setup(
     name=args.package_name,
     url='https://github.com/mitmul/pynvvl',
-    version='0.0.2a2',
+    version='0.0.2a3',
     author='Shunta Saito',
     author_email='shunta.saito@gmail.com',
     description=description,
+    long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
     license='MIT License',
     packages=['pynvvl'],
     package_data=package_data,
