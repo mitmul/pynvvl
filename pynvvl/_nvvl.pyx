@@ -104,14 +104,46 @@ cdef extern from "VideoLoader.h":
 
     cdef Size nvvl_video_size(VideoLoaderHandle loader)
 
+    enum LogLevel:
+        LogLevel_Debug
+        LogLevel_Info
+        LogLevel_Warn
+        LogLevel_Error
+        LogLevel_None
+
+    cdef void nvvl_set_log_level(VideoLoaderHandle loader, LogLevel level)
+
 
 cdef class NVVLVideoLoader:
+
+    """Wrapper of NVVL VideoLoader
+
+    Args:
+        device_id (int): Specify the device id used to load a video.
+        log_level (str): Logging level which should be either ``'debug'``, ``'info'``, ``'warn'``,
+            ``'error'``, or ``'none'``. Logs with levels >= ``log_level`` is shown. The default is ``'warn'``.
+
+    """
 
     cdef VideoLoaderHandle handle
     cdef int device_id
 
-    def __init__(self, device_id):
+    def __init__(self, device_id, log_level='warn'):
         self.handle = nvvl_create_video_loader(device_id)
+        if log_level == 'debug':
+            nvvl_set_log_level(self.handle, LogLevel_Debug)
+        elif log_level == 'info':
+            nvvl_set_log_level(self.handle, LogLevel_Info)
+        elif log_level == 'warn':
+            nvvl_set_log_level(self.handle, LogLevel_Warn)
+        elif log_level == 'error':
+            nvvl_set_log_level(self.handle, LogLevel_Error)
+        elif log_level == 'none':
+            nvvl_set_log_level(self.handle, LogLevel_None)
+        else:
+            raise ValueError(
+                'log_level should be either \'debug\', \'info\', \'warn\', '
+                '\'error\', or \'none\', but {} was given.'.format(log_level))
         self.device_id = device_id
 
     def __deaclloc__(self):

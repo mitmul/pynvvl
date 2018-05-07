@@ -5,7 +5,7 @@ import pynvvl
 import matplotlib.pyplot as plt
 
 # Create NVVLVideoLoader object
-loader = pynvvl.NVVLVideoLoader(device_id=0)
+loader = pynvvl.NVVLVideoLoader(device_id=0, log_level='error')
 
 # Show the number of frames in the video
 n_frames = loader.frame_count('examples/sample.mp4')
