@@ -146,7 +146,7 @@ cdef class NVVLVideoLoader:
                 '\'error\', or \'none\', but {} was given.'.format(log_level))
         self.device_id = device_id
 
-    def __deaclloc__(self):
+    def __dealloc__(self):
         nvvl_destroy_video_loader(self.handle)
 
     def frame_count(self, filename):
