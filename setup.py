@@ -3,6 +3,7 @@
 
 import argparse
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -67,13 +68,49 @@ def create_extensions():
     return extensions
 
 
+def find_lib_from_pathlist(libname, *pathlists,
+                           include_ver_variants=True,
+                           include_library_path=True):
+    """Find library file from a list of paths"""
+
+    # pathlists is a list of strings (e.g. LIBRARY_PATH) or lists of paths
+    # so path_lists is a flattened list of directory paths
+    path_list = []
+    for lst in pathlists:
+        if type(lst) is str:
+            lst = re.split(r':', lst)
+        path_list += lst
+
+    if include_library_path:
+        path_list += re.split(r':', os.environ.get('LIBRARY_PATH') or "")
+
+    for path in path_list:
+        try:
+            files = os.listdir(path)
+        except FileNotFoundError:
+            continue
+
+        if libname in files:
+            return os.path.join(path, libname)
+
+        if include_ver_variants:
+            regexp = re.escape(libname) + r'\.\d+$'
+            libs = [f for f in files if re.match(regexp, f)]
+            if len(libs) > 0:
+                return os.path.join(path, libs[0])
+
+    raise RuntimeError("Cannot find a library '{}' "
+                       "in the specified paths".format(libname))
+
+
 def prepare_package_data():
-    wheel_libs = [
-        'docker/lib/cuda-{}/libnvvl.so'.format(CUDA_VERSION),
-        'docker/lib/cuda-{}/libavformat.so.57'.format(CUDA_VERSION),
-        'docker/lib/cuda-{}/libavcodec.so.57'.format(CUDA_VERSION),
-        'docker/lib/cuda-{}/libavutil.so.55'.format(CUDA_VERSION),
-    ]
+    lib_names = ['libnvvl.so',
+                 'libavformat.so',
+                 'libavcodec.so',
+                 'libavutil.so']
+    docker_lib_dir = 'docker/lib/cuda-{}'.format(CUDA_VERSION)
+    wheel_libs = [find_lib_from_pathlist(l, docker_lib_dir) for l in lib_names]
+
     lib_dir = 'pynvvl/_lib'
     if not os.path.exists(lib_dir):
         os.makedirs(lib_dir)
