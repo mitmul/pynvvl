@@ -134,6 +134,9 @@ Loads the video from disk and returns it as a CuPy ndarray.
             It should be either 'RGB' or 'YCbCr'. Default is 'RGB'.
         chroma_up_method (str): How the chroma channels are upscaled from
             yuv 4:2:0 to 4:4:4. It should be 'Linear' currently.
+        out (cupy.ndarray): Alternate output array where place the result.
+            It must have the same shape and the dtype as the expected
+            output, and its order must be C-contiguous.
 ```
 
 ## How to build wheels
