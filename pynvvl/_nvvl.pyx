@@ -195,9 +195,12 @@ cdef class NVVLVideoLoader:
                 It should be either 'RGB' or 'YCbCr'. Default is 'RGB'.
             chroma_up_method (str): How the chroma channels are upscaled from
                 yuv 4:2:0 to 4:4:4. It should be 'Linear' currently.
-            out (cupy.ndarray): Alternate output array where place the result.
-                It must have the same shape and the dtype as the expected
-                output, and its order must be C-contiguous.
+            out (cupy.ndarray): The output array where the video is loaded.
+                This is optional, but if it is given, the memory resion of
+                ``out`` is used to load the video. It must have the same shape
+                and the dtype as the expected output, and its order must be
+                C-contiguous.
+
         """
         frame_count = self.frame_count(filename)
         if count is None:
@@ -221,14 +224,14 @@ cdef class NVVLVideoLoader:
                 array = cupy.ascontiguousarray(array)
             else:
                 if out.dtype != cupy.float32:
-                    raise ValueError('The dtype of out must be float32')
+                    raise ValueError('The dtype of `out` must be float32')
                 if out.shape != (count, channels, height, width):
                     raise ValueError(
-                        'The shape of out must be ({}, {}, {}, {}) '
+                        'The shape of `out` must be ({}, {}, {}, {}) '
                         '(actual: {})'.format(
                             count, channels, height, width, out.shape))
                 if not out.flags['C_CONTIGUOUS']:
-                    raise ValueError('out must be a contiguous array')
+                    raise ValueError('`out` must be a C-contiguous array')
                 array = out
             stream.synchronize()
 
