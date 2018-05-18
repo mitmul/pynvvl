@@ -3,7 +3,7 @@ import subprocess
 
 CYTHON_VERSION = '0.27.3'
 CUPY_VERSION = '4.0.0'
-PYNVVL_VERSION = '0.0.2a4'
+PYNVVL_VERSION = '0.0.2a5'
 
 WHEEL_CONFIGS = {
     '8.0': {

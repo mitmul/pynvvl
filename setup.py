@@ -116,7 +116,7 @@ description = \
 setup(
     name=args.package_name,
     url='https://github.com/mitmul/pynvvl',
-    version='0.0.2a4',
+    version='0.0.2a5',
     author='Shunta Saito',
     author_email='shunta.saito@gmail.com',
     description=description,
