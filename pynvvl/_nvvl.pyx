@@ -157,7 +157,7 @@ cdef class NVVLVideoLoader:
             scale_height=0, scale_width=0, crop_x=0, crop_y=0,
             crop_height=None, crop_width=None, scale_method='Linear',
             horiz_flip=False, normalized=False, color_space='RGB',
-            chroma_up_method='Linear'):
+            chroma_up_method='Linear', out=None):
         """Loads the video from disk and returns it as a CuPy ndarray.
 
         Args:
@@ -195,7 +195,9 @@ cdef class NVVLVideoLoader:
                 It should be either 'RGB' or 'YCbCr'. Default is 'RGB'.
             chroma_up_method (str): How the chroma channels are upscaled from
                 yuv 4:2:0 to 4:4:4. It should be 'Linear' currently.
-
+            out (cupy.ndarray): Alternate output array where place the result.
+                It must have the same shape and the dtype as the expected
+                output, and its order must be C-contiguous.
         """
         frame_count = self.frame_count(filename)
         if count is None:
@@ -213,9 +215,21 @@ cdef class NVVLVideoLoader:
         cdef string name = 'pixels'.encode('utf-8')
 
         with cupy.cuda.Stream() as stream:
-            array = cupy.empty(
-                (count, channels, height, width), dtype=cupy.float32)
-            array = cupy.ascontiguousarray(array)
+            if out is None:
+                array = cupy.empty(
+                    (count, channels, height, width), dtype=cupy.float32)
+                array = cupy.ascontiguousarray(array)
+            else:
+                if out.dtype != cupy.float32:
+                    raise ValueError('The dtype of out must be float32')
+                if out.shape != (count, channels, height, width):
+                    raise ValueError(
+                        'The shape of out must be ({}, {}, {}, {}) '
+                        '(actual: {})'.format(
+                            count, channels, height, width, out.shape))
+                if not out.flags['C_CONTIGUOUS']:
+                    raise ValueError('out must be a contiguous array')
+                array = out
             stream.synchronize()
 
             layer.type = PDT_FLOAT
