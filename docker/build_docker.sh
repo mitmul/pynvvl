@@ -14,3 +14,4 @@ build_docker_image() {
 build_docker_image 8.0 cupy-cuda80
 build_docker_image 9.0 cupy-cuda90
 build_docker_image 9.1 cupy-cuda91
+build_docker_image 9.2 cupy-cuda92
