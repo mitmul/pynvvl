@@ -63,3 +63,4 @@ RUN for VERSION in ${python_versions}; do \
         pip freeze; \
     done;
 
+ENV LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH

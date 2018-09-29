@@ -116,7 +116,7 @@ description = \
 setup(
     name=args.package_name,
     url='https://github.com/mitmul/pynvvl',
-    version='0.0.2a5',
+    version='0.0.3a1',
     author='Shunta Saito',
     author_email='shunta.saito@gmail.com',
     description=description,
@@ -126,10 +126,10 @@ setup(
     packages=['pynvvl'],
     package_data=package_data,
     install_requires=[
-        '{}>=4.0.0'.format(cupy_package_name),
+        '{}>=4.5.0'.format(cupy_package_name),
     ],
     setup_requires=[
-        'cython>=0.27.3',
+        'cython>=0.28.0',
     ],
     ext_modules=extensions,
     cmdclass={'build_ext': build_ext},

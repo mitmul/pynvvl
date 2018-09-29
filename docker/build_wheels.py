@@ -1,9 +1,9 @@
 import os
 import subprocess
 
-CYTHON_VERSION = '0.27.3'
-CUPY_VERSION = '4.0.0'
-PYNVVL_VERSION = '0.0.2a5'
+CYTHON_VERSION = '0.28.0'
+CUPY_VERSION = '4.5.0'
+PYNVVL_VERSION = '0.0.3a1'
 
 WHEEL_CONFIGS = {
     '8.0': {
@@ -20,6 +20,11 @@ WHEEL_CONFIGS = {
         'lib': 'docker/lib/cuda-9.1',
         'tag': 'mitmul/pynvvl:cuda-9.1-wheels',
         'test': 'mitmul/pynvvl:cuda-9.1-test',
+    },
+    '9.2': {
+        'lib': 'docker/lib/cuda-9.2',
+        'tag': 'mitmul/pynvvl:cuda-9.2-wheels',
+        'test': 'mitmul/pynvvl:cuda-9.2-test',
     },
 }
 
@@ -83,8 +88,7 @@ def build_wheels(cuda_version):
             ' -t {tag}'
             ' bash -c'
             ' " \
-            find / -name \"*libnvcuvid.so.1\" | \
-            xargs -IXXX ln -s XXX /usr/local/lib/libnvcuvid.so && \
+            ln -s /usr/local/nvidia/lib/libnvcuvid.so.1 /usr/local/lib/libnvcuvid.so && \
             pyenv global {python_version} && pyenv rehash && \
             cd /pynvvl && python setup.py bdist_wheel \
             -d dist/cuda-{cuda_version} \
@@ -138,6 +142,7 @@ def build_wheels(cuda_version):
             ' -t {tag}'
             ' bash -c'
             ' " \
+            ls -la /wheels/ && echo {cuda_version} && \
             pyenv global {python_version} && pyenv rehash && \
             pip install /wheels/{wheel_name} && \
             cd / && python examples/simple_load.py \

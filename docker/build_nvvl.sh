@@ -17,6 +17,7 @@ build_libnvvl() {
     cd /root/nvvl && mkdir build && cd build && \
     cd /root/nvvl/build && \
     cmake ../ \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
     -DCMAKE_INSTALL_RPATH=\"\\\$ORIGIN\" && \
     make -j && cp libnvvl.so /root/build/lib/cuda-$1 && \
