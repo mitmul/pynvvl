@@ -139,13 +139,37 @@ Loads the video from disk and returns it as a CuPy ndarray.
             output, and its order must be C-contiguous.
 ```
 
-## How to build wheels
+## How to build
 
-### Requirements for build
+### Build wheels using Docker: 
+
+Requirements:
 
 - Docker
 - nvidia-docker (v1/v2)
 
 ```
 bash docker/build_wheels.sh
+```
+
+### Setup development environment without Docker:
+
+The `setup.py` script searches for necessary libraries.
+
+Requirements: the following libraries are available in `LIBRARY_PATH`.
+
+- libnvvl.so
+- libavformat.so
+- libavcodec.so
+- libavutil.so
+
+You can build `libnvvl.so` in the `nvvl` repository. Follow the instructions
+of `nvvl` library. The `build` directory must be in `LIBRARY_PATH`.
+
+Other three libraries are available as packages in Ubuntu 16.04.
+They are installed under `/usr/lib/x86_64-linux-gnu`, so they must be in `LIBRARY_PATH` as well.
+
+```
+python setup.py develop
+python setup.py bdist_wheel
 ```
