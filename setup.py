@@ -68,10 +68,11 @@ def create_extensions():
     return extensions
 
 
-def find_lib_from_pathlist(libname, *pathlists,
-                           include_ver_variants=True,
-                           include_library_path=True):
+def find_lib_from_pathlist(libname, *pathlists, **kwargs):
     """Find library file from a list of paths"""
+    
+    include_ver_variants = kwargs.pop('include_ver_variants', True)
+    include_library_path = kwargs.pop('include_library_path', True)
 
     # pathlists is a list of strings (e.g. LIBRARY_PATH) or lists of paths
     # so path_lists is a flattened list of directory paths
