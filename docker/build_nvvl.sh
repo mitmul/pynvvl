@@ -6,8 +6,7 @@ build_libnvvl() {
     -v $PWD/docker:/root/build -t mitmul/pynvvl:cuda-$1 \
     bash -c " \
     if [ ! -f /usr/local/lib/libnvcuvid.so ]; then \
-        find / -name \"*libnvcuvid.so.1\" | \
-        xargs -I{} ln -s {} /usr/local/lib/libnvcuvid.so; \
+        ln -s /usr/local/nvidia/lib64/libnvcuvid.so.1 /usr/local/lib/libnvcuvid.so; \
     fi && \
     if [ ! -d /root/build/lib/cuda-$1 ]; then \
         mkdir -p /root/build/lib/cuda-$1; \
@@ -18,6 +17,7 @@ build_libnvvl() {
     cd /root/nvvl && mkdir build && cd build && \
     cd /root/nvvl/build && \
     cmake ../ \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
     -DCMAKE_INSTALL_RPATH=\"\\\$ORIGIN\" && \
     make -j && cp libnvvl.so /root/build/lib/cuda-$1 && \
@@ -29,3 +29,6 @@ build_libnvvl() {
 build_libnvvl 8.0
 build_libnvvl 9.0
 build_libnvvl 9.1
+build_libnvvl 9.2
+
+
