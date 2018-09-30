@@ -9,7 +9,6 @@ import subprocess
 import sys
 import sysconfig
 
-import six
 from Cython.Distutils import build_ext
 from pkg_resources import get_distribution
 from setuptools import Extension
