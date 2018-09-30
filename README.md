@@ -6,7 +6,7 @@ PyNVVL
 [![pypi-pynvvl-cuda92](https://img.shields.io/pypi/v/pynvvl-cuda92.svg)](https://pypi.org/project/pynvvl-cuda92)
 [![GitHub license](https://img.shields.io/github/license/mitmul/pynvvl.svg)](https://github.com/mitmul/pynvvl)
 
-PyNVVL is a thin wrapper of [NVIDIA Video Loader (NVVL)](https://github.com/NVIDIA/nvvl). This package enables you to load videos directoly to GPU memory and access them as [CuPy](https://github.com/cupy/cupy) ndarrays with zero copy. The pre-built binaries of PyNVVL include NVVL itself, so you do not need to install NVVL.
+PyNVVL is a thin wrapper of [NVIDIA Video Loader (NVVL)](https://github.com/NVIDIA/nvvl). This package enables you to load videos directly to GPU memory and access them as [CuPy](https://github.com/cupy/cupy) ndarrays with zero copy. The pre-built binaries of PyNVVL include NVVL itself, so you do not need to install NVVL.
 
 ## Requirements
 
@@ -84,7 +84,7 @@ Note that cropping is performed after scaling. In the above example, NVVL perfor
 ## VideoLoader options
 
 Please specify the GPU device id when you create a `NVVLVideoLoader` object.
-You can also specify the logging level with a argument `log_level` for the constructor of `NVVLVideoLoader`.
+You can also specify the logging level with the argument `log_level` for the constructor of `NVVLVideoLoader`.
 
 ```
 Wrapper of NVVL VideoLoader
@@ -160,7 +160,7 @@ bash docker/build_wheels.sh
 
 The `setup.py` script searches for necessary libraries.
 
-Requirements: the following libraries are available in `LIBRARY_PATH`.
+Requirements: the following libraries should be available in `LIBRARY_PATH`.
 
 - libnvvl.so
 - libavformat.so.57
@@ -171,7 +171,7 @@ Requirements: the following libraries are available in `LIBRARY_PATH`.
 You can build `libnvvl.so` in the `nvvl` repository. Follow the instructions
 of `nvvl` library. The `build` directory must be in `LIBRARY_PATH`.
 
-Other three libraries are available as packages in Ubuntu 16.04.
+THe other three libraries are available as packages in Ubuntu 16.04.
 They are installed under `/usr/lib/x86_64-linux-gnu`, so they must be in `LIBRARY_PATH` as well.
 
 ```
