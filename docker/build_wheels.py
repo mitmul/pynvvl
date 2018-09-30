@@ -1,6 +1,7 @@
 import os
 import subprocess
 
+
 CYTHON_VERSION = '0.28.0'
 CUPY_VERSION = '4.5.0'
 PYNVVL_VERSION = '0.0.3a1'
@@ -142,7 +143,6 @@ def build_wheels(cuda_version):
             ' -t {tag}'
             ' bash -c'
             ' " \
-            ls -la /wheels/ && echo {cuda_version} && \
             pyenv global {python_version} && pyenv rehash && \
             pip install /wheels/{wheel_name} && \
             cd / && python examples/simple_load.py \
@@ -167,3 +167,4 @@ for cuda_version, wheel_config in WHEEL_CONFIGS.items():
     print('-' * 10, 'Building for CUDA {}'.format(cuda_version), '-' * 10)
     build_wheels(cuda_version)
     print('=' * 30)
+

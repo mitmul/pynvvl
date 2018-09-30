@@ -68,7 +68,7 @@ def create_extensions():
     return extensions
 
 
-def find_lib_from_pathlist(libname, *pathlists, **kwargs):
+def find_lib_from_pathlist(libname, pathlists, **kwargs):
     """Find library file from a list of paths"""
     
     include_ver_variants = kwargs.pop('include_ver_variants', True)
@@ -88,7 +88,7 @@ def find_lib_from_pathlist(libname, *pathlists, **kwargs):
     for path in path_list:
         try:
             files = os.listdir(path)
-        except FileNotFoundError:
+        except IOError:
             continue
 
         if libname in files:
@@ -105,12 +105,15 @@ def find_lib_from_pathlist(libname, *pathlists, **kwargs):
 
 
 def prepare_package_data():
-    lib_names = ['libnvvl.so',
-                 'libavformat.so',
-                 'libavcodec.so',
-                 'libavutil.so']
+    lib_names = [
+        'libnvvl.so',
+        'libavformat.so.57',
+        'libavfilter.so.6',
+        'libavcodec.so.57',
+        'libavutil.so.55',
+    ]
     docker_lib_dir = 'docker/lib/cuda-{}'.format(CUDA_VERSION)
-    wheel_libs = [find_lib_from_pathlist(l, docker_lib_dir) for l in lib_names]
+    wheel_libs = [find_lib_from_pathlist(l, [docker_lib_dir]) for l in lib_names]
 
     lib_dir = 'pynvvl/_lib'
     if not os.path.exists(lib_dir):
