@@ -3,21 +3,22 @@ PyNVVL
 [![pypi-pynvvl-cuda80](https://img.shields.io/pypi/v/pynvvl-cuda80.svg)](https://pypi.org/project/pynvvl-cuda80)
 [![pypi-pynvvl-cuda90](https://img.shields.io/pypi/v/pynvvl-cuda90.svg)](https://pypi.org/project/pynvvl-cuda90)
 [![pypi-pynvvl-cuda91](https://img.shields.io/pypi/v/pynvvl-cuda91.svg)](https://pypi.org/project/pynvvl-cuda91)
+[![pypi-pynvvl-cuda92](https://img.shields.io/pypi/v/pynvvl-cuda92.svg)](https://pypi.org/project/pynvvl-cuda92)
 [![GitHub license](https://img.shields.io/github/license/mitmul/pynvvl.svg)](https://github.com/mitmul/pynvvl)
 
 PyNVVL is a thin wrapper of [NVIDIA Video Loader (NVVL)](https://github.com/NVIDIA/nvvl). This package enables you to load videos directoly to GPU memory and access them as [CuPy](https://github.com/cupy/cupy) ndarrays with zero copy. The pre-built binaries of PyNVVL include NVVL itself, so you do not need to install NVVL.
 
 ## Requirements
 
-- CUDA 8.0, 9.0, or 9.1
+- CUDA 8.0, 9.0, 9.1, or 9.2
 - Python 2.7.6+, 3.4.7+, 3.5.1+, or 3.6.0+
-- [CuPy](https://github.com/cupy/cupy) v4.0.0
+- [CuPy](https://github.com/cupy/cupy) v4.5.0
 
 ## Tested Environment
 
 - Ubuntu 16.04
 - Python 2.7.6+, 3.4.7+, 3.5.1+, and 3.6.0+
-- CUDA 8.0, 9.0, and 9.1
+- CUDA 8.0, 9.0, 9.1, and 9.2
 
 ## Install the pre-built binary
 
@@ -32,6 +33,9 @@ pip install pynvvl-cuda90
 
 # [For CUDA 9.1]
 pip install pynvvl-cuda91
+
+# [For CUDA 9.2]
+pip install pynvvl-cuda92
 ```
 
 ## Usage

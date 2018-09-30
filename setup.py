@@ -14,6 +14,7 @@ from pkg_resources import get_distribution
 from setuptools import Extension
 from setuptools import setup
 
+
 CUDA_VERSION = subprocess.check_output(
     'nvcc -V | grep -oP "release\s([0-9\.]+)" | grep -oP "([0-9\.]+)"',
     shell=True).decode('utf-8').strip()
@@ -157,7 +158,7 @@ description = \
 setup(
     name=args.package_name,
     url='https://github.com/mitmul/pynvvl',
-    version='0.0.3a1',
+    version='0.0.3a2',
     author='Shunta Saito',
     author_email='shunta.saito@gmail.com',
     description=description,
