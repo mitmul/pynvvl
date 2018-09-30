@@ -163,9 +163,10 @@ The `setup.py` script searches for necessary libraries.
 Requirements: the following libraries are available in `LIBRARY_PATH`.
 
 - libnvvl.so
-- libavformat.so
-- libavcodec.so
-- libavutil.so
+- libavformat.so.57
+- libavfilter.so.6
+- libavcodec.so.57
+- libavutil.so.55
 
 You can build `libnvvl.so` in the `nvvl` repository. Follow the instructions
 of `nvvl` library. The `build` directory must be in `LIBRARY_PATH`.
