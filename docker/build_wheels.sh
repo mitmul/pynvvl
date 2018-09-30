@@ -1,8 +1,17 @@
 #!/bin/bash
 
+nvidia-docker run --rm \
+    -v $PWD:/pynvvl \
+    -t mitmul/pynvvl:cuda-8.0 \
+    rm -rf \
+    /pynvvl/build \
+    /pynvvl/dist \
+    /pynvvl/docker/lib \
+    /pynvvl/pynvvl_cuda80.egg-info \
+    /pynvvl/pynvvl_cuda90.egg-info \
+    /pynvvl/pynvvl_cuda91.egg-info \
+    /pynvvl/pynvvl_cuda92.egg-info \
+    /pynvvl/pynvvl.egg-info 
 bash docker/build_docker.sh
-sudo rm -rf docker/lib
 bash docker/build_nvvl.sh
-sudo rm -rf build dist *.egg-info
-sudo rm -rf examples/*.txt examples/*.png
-python3 docker/build_wheels.py
+python docker/build_wheels.py
