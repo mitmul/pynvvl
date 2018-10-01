@@ -171,7 +171,7 @@ Requirements: the following libraries should be available in `LIBRARY_PATH`.
 You can build `libnvvl.so` in the `nvvl` repository. Follow the instructions
 of `nvvl` library. The `build` directory must be in `LIBRARY_PATH`.
 
-THe other three libraries are available as packages in Ubuntu 16.04.
+The other three libraries are available as packages in Ubuntu 16.04.
 They are installed under `/usr/lib/x86_64-linux-gnu`, so they must be in `LIBRARY_PATH` as well.
 
 ```
