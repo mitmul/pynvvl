@@ -13,7 +13,7 @@ PyNVVL is a thin wrapper of [NVIDIA Video Loader (NVVL)](https://github.com/NVID
 
 - CUDA 8.0, 9.0, 9.1, 9.2, or 10.0
 - Python 2.7.6+, 3.4.7+, 3.5.1+, or 3.6.0+
-- [CuPy](https://github.com/cupy/cupy) v4.5.0
+- [CuPy](https://github.com/cupy/cupy) v5.2.0
 
 ## Tested Environment
 

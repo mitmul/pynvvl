@@ -3,8 +3,8 @@ import subprocess
 
 
 CYTHON_VERSION = '0.28.0'
-CUPY_VERSION = '4.5.0'
-PYNVVL_VERSION = '0.0.3a2'
+CUPY_VERSION = '5.2.0'
+PYNVVL_VERSION = '0.0.4a1'
 
 WHEEL_CONFIGS = {
     '8.0': {
@@ -68,6 +68,9 @@ def build_docker_image(cuda_version, tag, test):
         '-t', tag,
         '-f', 'docker/Dockerfile.wheels', 'docker'
     ])
+
+    print('Built {}'.format(tag))
+
     subprocess.call([
         'docker', 'build',
         '--build-arg', 'cuda_version={}'.format(cuda_version),
@@ -140,6 +143,7 @@ def build_wheels(cuda_version):
             PYNVVL_VERSION,
             package_python
         )
+        
         subprocess.call(
             'nvidia-docker run'
             ' --rm'

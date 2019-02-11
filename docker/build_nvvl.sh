@@ -6,13 +6,12 @@ build_libnvvl() {
     -v $PWD/docker:/root/build -t mitmul/pynvvl:cuda-$1 \
     bash -c " \
     if [ ! -f /usr/local/lib/libnvcuvid.so ]; then \
-        ln -s /usr/local/nvidia/lib64/libnvcuvid.so.1 /usr/local/lib/libnvcuvid.so; \
+        ln -s /root/nvvl/pytorch/test/docker/libnvcuvid.so /usr/local/lib/libnvcuvid.so; \
     fi && \
     if [ ! -d /root/build/lib/cuda-$1 ]; then \
         mkdir -p /root/build/lib/cuda-$1; \
     fi && \
     cp -r /usr/local/lib /root/build/lib/cuda-$1 && \
-    mv /root/build/lib/cuda-$1/lib/* /root/build/lib/cuda-$1/ && \
     rm -rf /root/build/lib/cuda-$1/lib && \
     cd /root/nvvl && mkdir build && cd build && \
     cd /root/nvvl/build && \
