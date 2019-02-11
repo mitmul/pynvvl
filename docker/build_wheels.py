@@ -27,6 +27,11 @@ WHEEL_CONFIGS = {
         'tag': 'mitmul/pynvvl:cuda-9.2-wheels',
         'test': 'mitmul/pynvvl:cuda-9.2-test',
     },
+    '10.0': {
+        'lib': 'docker/lib/cuda-10.0',
+        'tag': 'mitmul/pynvvl:cuda-10.0-wheels',
+        'test': 'mitmul/pynvvl:cuda-10.0-test',
+    },
 }
 
 PYTHON_VERSIONS = {

@@ -30,5 +30,6 @@ build_libnvvl 8.0
 build_libnvvl 9.0
 build_libnvvl 9.1
 build_libnvvl 9.2
+build_libnvvl 10.0
 
 

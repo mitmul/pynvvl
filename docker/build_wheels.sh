@@ -11,6 +11,7 @@ nvidia-docker run --rm \
     /pynvvl/pynvvl_cuda90.egg-info \
     /pynvvl/pynvvl_cuda91.egg-info \
     /pynvvl/pynvvl_cuda92.egg-info \
+    /pynvvl/pynvvl_cuda100.egg-info \
     /pynvvl/pynvvl.egg-info 
 bash docker/build_docker.sh
 bash docker/build_nvvl.sh
