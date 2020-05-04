@@ -1,0 +1,3 @@
+[submodule "DALI"]
+	path = DALI
+	url = https://github.com/NVIDIA/DALI.git
